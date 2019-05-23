@@ -17,7 +17,9 @@ public:
 
     void Print (std::ostream & os) const override;
 
-    bool isNumber () const override;
+    //bool IsNumber () const override;
+
+    CType CellType() const override;
 
     friend std::ostream &operator<<(std::ostream &os, const CString &string);
 

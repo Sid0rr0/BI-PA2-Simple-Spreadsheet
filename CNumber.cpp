@@ -17,6 +17,10 @@ void CNumber::Print(std::ostream &os) const {
     os << m_Val;
 }
 
-bool CNumber::isNumber() const {
-    return true;
+CCell::CType CNumber::CellType() const {
+    return NUM;
 }
+
+/*bool CNumber::IsNumber() const {
+    return true;
+}*/

@@ -5,7 +5,6 @@
 #ifndef SEMESTRAL_CNUMBER_H
 #define SEMESTRAL_CNUMBER_H
 
-
 #include <ostream>
 #include "CCell.h"
 
@@ -17,7 +16,9 @@ public:
 
     void Print (std::ostream & os) const override;
 
-    bool isNumber () const override;
+    //bool IsNumber () const override;
+
+    CType CellType() const override;
 
     friend std::ostream &operator<<(std::ostream &os, const CNumber &number);
 

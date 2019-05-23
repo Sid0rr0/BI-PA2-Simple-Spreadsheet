@@ -12,7 +12,8 @@
 
 class CFunction : public CCell{
 public:
-    CFunction(std::string mOperation, double mVal);
+    //CFunction(std::string mOperation, double mVal);
+    CFunction(std::string  mInput);
 
     ~CFunction() override;
 
@@ -20,11 +21,14 @@ public:
 
     void PrintValue (std::ostream & os) const;
 
-    bool isNumber () const override;
+    //bool IsNumber () const override;
+
+    CType CellType () const override;
 
     friend std::ostream &operator<<(std::ostream &os, const CFunction &function);
 
 private:
+    std::string m_Input;
     std::string m_Operation;
     double m_Value;
     double m_Result;

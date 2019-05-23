@@ -1,9 +1,4 @@
 #include <utility>
-
-//
-// Created by hung on 12.5.19.
-//
-
 #include "CString.h"
 
 CString::CString(std::string mVal) : m_Val(std::move(mVal)) {}
@@ -19,6 +14,10 @@ void CString::Print(std::ostream &os) const {
     os << m_Val;
 }
 
-bool CString::isNumber() const {
-    return false;
+CCell::CType CString::CellType() const {
+    return STR;
 }
+
+/*bool CString::IsNumber() const {
+    return false;
+}*/

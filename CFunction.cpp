@@ -1,12 +1,9 @@
 #include <utility>
-
-//
-// Created by hung on 12.5.19.
-//
-
 #include "CFunction.h"
 
-CFunction::CFunction(std::string mOperation, double mVal) : m_Operation(std::move(mOperation)), m_Value(mVal) {}
+CFunction::CFunction(std::string mInput): m_Input(std::move(mInput)){
+
+}
 
 CFunction::~CFunction() = default;
 
@@ -23,8 +20,14 @@ void CFunction::PrintValue(std::ostream &os) const {
     os << m_Result;
 }
 
-bool CFunction::isNumber() const {
+/*bool CFunction::IsNumber() const {
     return false;
+}*/
+
+CCell::CType CFunction::CellType() const {
+    return FUNC;
 }
+
+
 
 
