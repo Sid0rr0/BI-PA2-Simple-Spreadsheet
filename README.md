@@ -17,7 +17,7 @@ Finally the spreadsheet will implement aggregatin functions such as: =AVG(D3:G5)
 
 
 
-######Polymorphism
+#####Polymorphism
 
 Parent class CCell and it's children CString, CNumber, CFunction.
 
