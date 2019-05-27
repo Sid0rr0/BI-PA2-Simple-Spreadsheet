@@ -25,6 +25,8 @@ public:
 
     CType CellType () const override;
 
+    int ParseInput(const std::string& input);
+
     friend std::ostream &operator<<(std::ostream &os, const CFunction &function);
 
 private:

@@ -10,7 +10,8 @@ int main() {
     CString s1("Hello World!");
     CFunction f1("=sin(3)");
 
-    std::cout << n1 << " " << s1;
+    std::cout << n1 << " " << s1 << std::endl;
+    std::cout << f1 << std::endl;
 
 
     return 0;
