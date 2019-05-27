@@ -8,28 +8,28 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/hung/pa2/semestral/cmake-build-debug"/>
+				<Option working_dir="/home/hung/pa2/lethanhh/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/hung/pa2/semestral/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/hung/pa2/semestral/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/hung/pa2/semestral/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/hung/pa2/semestral/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/hung/pa2/lethanhh/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/hung/pa2/lethanhh/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/hung/pa2/lethanhh/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/hung/pa2/lethanhh/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/hung/pa2/semestral/cmake-build-debug"/>
+				<Option working_dir="/home/hung/pa2/lethanhh/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/hung/pa2/semestral/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/hung/pa2/semestral/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/hung/pa2/semestral/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/hung/pa2/semestral/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/hung/pa2/lethanhh/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/hung/pa2/lethanhh/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/hung/pa2/lethanhh/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/hung/pa2/lethanhh/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="semestral">
-				<Option output="/home/hung/pa2/semestral/cmake-build-debug/semestral" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/hung/pa2/semestral/cmake-build-debug"/>
+				<Option output="/home/hung/pa2/lethanhh/cmake-build-debug/semestral" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/hung/pa2/lethanhh/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -44,15 +44,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/hung/pa2/semestral/cmake-build-debug/Makefile&quot;  VERBOSE=1 semestral"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/hung/pa2/semestral/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/hung/pa2/semestral/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/hung/pa2/semestral/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/hung/pa2/lethanhh/cmake-build-debug/Makefile&quot;  VERBOSE=1 semestral"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/hung/pa2/lethanhh/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/hung/pa2/lethanhh/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/hung/pa2/lethanhh/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="semestral/fast">
-				<Option output="/home/hung/pa2/semestral/cmake-build-debug/semestral" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/hung/pa2/semestral/cmake-build-debug"/>
+				<Option output="/home/hung/pa2/lethanhh/cmake-build-debug/semestral" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/hung/pa2/lethanhh/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -67,51 +67,51 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/hung/pa2/semestral/cmake-build-debug/Makefile&quot;  VERBOSE=1 semestral/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/hung/pa2/semestral/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/hung/pa2/semestral/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/hung/pa2/semestral/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/hung/pa2/lethanhh/cmake-build-debug/Makefile&quot;  VERBOSE=1 semestral/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/hung/pa2/lethanhh/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/hung/pa2/lethanhh/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/hung/pa2/lethanhh/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/hung/pa2/semestral/cmake-build-debug"/>
+				<Option working_dir="/home/hung/pa2/lethanhh/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/hung/pa2/semestral/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/hung/pa2/semestral/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/hung/pa2/semestral/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/hung/pa2/semestral/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/hung/pa2/lethanhh/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/hung/pa2/lethanhh/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/hung/pa2/lethanhh/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/hung/pa2/lethanhh/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/hung/pa2/semestral/CCell.cpp">
+		<Unit filename="/home/hung/pa2/lethanhh/src/CCell.cpp">
 			<Option target="semestral"/>
 		</Unit>
-		<Unit filename="/home/hung/pa2/semestral/CCell.h">
+		<Unit filename="/home/hung/pa2/lethanhh/src/CCell.h">
 			<Option target="semestral"/>
 		</Unit>
-		<Unit filename="/home/hung/pa2/semestral/CFunction.cpp">
+		<Unit filename="/home/hung/pa2/lethanhh/src/CFunction.cpp">
 			<Option target="semestral"/>
 		</Unit>
-		<Unit filename="/home/hung/pa2/semestral/CFunction.h">
+		<Unit filename="/home/hung/pa2/lethanhh/src/CFunction.h">
 			<Option target="semestral"/>
 		</Unit>
-		<Unit filename="/home/hung/pa2/semestral/CNumber.cpp">
+		<Unit filename="/home/hung/pa2/lethanhh/src/CNumber.cpp">
 			<Option target="semestral"/>
 		</Unit>
-		<Unit filename="/home/hung/pa2/semestral/CNumber.h">
+		<Unit filename="/home/hung/pa2/lethanhh/src/CNumber.h">
 			<Option target="semestral"/>
 		</Unit>
-		<Unit filename="/home/hung/pa2/semestral/CString.cpp">
+		<Unit filename="/home/hung/pa2/lethanhh/src/CString.cpp">
 			<Option target="semestral"/>
 		</Unit>
-		<Unit filename="/home/hung/pa2/semestral/CString.h">
+		<Unit filename="/home/hung/pa2/lethanhh/src/CString.h">
 			<Option target="semestral"/>
 		</Unit>
-		<Unit filename="/home/hung/pa2/semestral/main.cpp">
+		<Unit filename="/home/hung/pa2/lethanhh/src/main.cpp">
 			<Option target="semestral"/>
 		</Unit>
-		<Unit filename="/home/hung/pa2/semestral/CMakeLists.txt">
+		<Unit filename="/home/hung/pa2/lethanhh/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

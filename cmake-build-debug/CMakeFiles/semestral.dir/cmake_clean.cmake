@@ -1,9 +1,9 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/semestral.dir/main.cpp.o"
-  "CMakeFiles/semestral.dir/CCell.cpp.o"
-  "CMakeFiles/semestral.dir/CFunction.cpp.o"
-  "CMakeFiles/semestral.dir/CString.cpp.o"
-  "CMakeFiles/semestral.dir/CNumber.cpp.o"
+  "CMakeFiles/semestral.dir/src/main.cpp.o"
+  "CMakeFiles/semestral.dir/src/CCell.cpp.o"
+  "CMakeFiles/semestral.dir/src/CFunction.cpp.o"
+  "CMakeFiles/semestral.dir/src/CString.cpp.o"
+  "CMakeFiles/semestral.dir/src/CNumber.cpp.o"
   "semestral.pdb"
   "semestral"
 )

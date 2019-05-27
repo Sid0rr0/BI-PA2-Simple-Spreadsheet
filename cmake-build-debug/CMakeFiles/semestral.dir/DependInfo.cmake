@@ -4,11 +4,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/hung/pa2/semestral/CCell.cpp" "/home/hung/pa2/semestral/cmake-build-debug/CMakeFiles/semestral.dir/CCell.cpp.o"
-  "/home/hung/pa2/semestral/CFunction.cpp" "/home/hung/pa2/semestral/cmake-build-debug/CMakeFiles/semestral.dir/CFunction.cpp.o"
-  "/home/hung/pa2/semestral/CNumber.cpp" "/home/hung/pa2/semestral/cmake-build-debug/CMakeFiles/semestral.dir/CNumber.cpp.o"
-  "/home/hung/pa2/semestral/CString.cpp" "/home/hung/pa2/semestral/cmake-build-debug/CMakeFiles/semestral.dir/CString.cpp.o"
-  "/home/hung/pa2/semestral/main.cpp" "/home/hung/pa2/semestral/cmake-build-debug/CMakeFiles/semestral.dir/main.cpp.o"
+  "/home/hung/pa2/lethanhh/src/CCell.cpp" "/home/hung/pa2/lethanhh/cmake-build-debug/CMakeFiles/semestral.dir/src/CCell.cpp.o"
+  "/home/hung/pa2/lethanhh/src/CFunction.cpp" "/home/hung/pa2/lethanhh/cmake-build-debug/CMakeFiles/semestral.dir/src/CFunction.cpp.o"
+  "/home/hung/pa2/lethanhh/src/CNumber.cpp" "/home/hung/pa2/lethanhh/cmake-build-debug/CMakeFiles/semestral.dir/src/CNumber.cpp.o"
+  "/home/hung/pa2/lethanhh/src/CString.cpp" "/home/hung/pa2/lethanhh/cmake-build-debug/CMakeFiles/semestral.dir/src/CString.cpp.o"
+  "/home/hung/pa2/lethanhh/src/main.cpp" "/home/hung/pa2/lethanhh/cmake-build-debug/CMakeFiles/semestral.dir/src/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

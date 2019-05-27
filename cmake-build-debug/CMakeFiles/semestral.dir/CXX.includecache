@@ -6,23 +6,61 @@
 
 #IncludeRegexTransform: 
 
-/home/hung/pa2/semestral/CCell.h
+/home/hung/pa2/lethanhh/src/CCell.cpp
+CCell.h
+/home/hung/pa2/lethanhh/src/CCell.h
+
+/home/hung/pa2/lethanhh/src/CCell.h
 ostream
 -
 
-/home/hung/pa2/semestral/CFunction.cpp
+/home/hung/pa2/lethanhh/src/CFunction.cpp
 utility
 -
 iostream
 -
 CFunction.h
-/home/hung/pa2/semestral/CFunction.h
+/home/hung/pa2/lethanhh/src/CFunction.h
 
-/home/hung/pa2/semestral/CFunction.h
+/home/hung/pa2/lethanhh/src/CFunction.h
 ostream
 -
 CCell.h
-/home/hung/pa2/semestral/CCell.h
+/home/hung/pa2/lethanhh/src/CCell.h
 string
 -
+
+/home/hung/pa2/lethanhh/src/CNumber.cpp
+CNumber.h
+/home/hung/pa2/lethanhh/src/CNumber.h
+
+/home/hung/pa2/lethanhh/src/CNumber.h
+ostream
+-
+CCell.h
+/home/hung/pa2/lethanhh/src/CCell.h
+
+/home/hung/pa2/lethanhh/src/CString.cpp
+utility
+-
+CString.h
+/home/hung/pa2/lethanhh/src/CString.h
+
+/home/hung/pa2/lethanhh/src/CString.h
+string
+-
+ostream
+-
+CCell.h
+/home/hung/pa2/lethanhh/src/CCell.h
+
+/home/hung/pa2/lethanhh/src/main.cpp
+iostream
+-
+CNumber.h
+/home/hung/pa2/lethanhh/src/CNumber.h
+CString.h
+/home/hung/pa2/lethanhh/src/CString.h
+CFunction.h
+/home/hung/pa2/lethanhh/src/CFunction.h
 

@@ -48,10 +48,10 @@ RM = /opt/clion-2019.1/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/hung/pa2/semestral
+CMAKE_SOURCE_DIR = /home/hung/pa2/lethanhh
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/hung/pa2/semestral/cmake-build-debug
+CMAKE_BINARY_DIR = /home/hung/pa2/lethanhh/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/hung/pa2/semestral/cmake-build-debug/CMakeFiles /home/hung/pa2/semestral/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/hung/pa2/lethanhh/cmake-build-debug/CMakeFiles /home/hung/pa2/lethanhh/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/hung/pa2/semestral/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/hung/pa2/lethanhh/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -123,140 +123,140 @@ semestral/fast:
 	$(MAKE) -f CMakeFiles/semestral.dir/build.make CMakeFiles/semestral.dir/build
 .PHONY : semestral/fast
 
-CCell.o: CCell.cpp.o
+src/CCell.o: src/CCell.cpp.o
 
-.PHONY : CCell.o
-
-# target to build an object file
-CCell.cpp.o:
-	$(MAKE) -f CMakeFiles/semestral.dir/build.make CMakeFiles/semestral.dir/CCell.cpp.o
-.PHONY : CCell.cpp.o
-
-CCell.i: CCell.cpp.i
-
-.PHONY : CCell.i
-
-# target to preprocess a source file
-CCell.cpp.i:
-	$(MAKE) -f CMakeFiles/semestral.dir/build.make CMakeFiles/semestral.dir/CCell.cpp.i
-.PHONY : CCell.cpp.i
-
-CCell.s: CCell.cpp.s
-
-.PHONY : CCell.s
-
-# target to generate assembly for a file
-CCell.cpp.s:
-	$(MAKE) -f CMakeFiles/semestral.dir/build.make CMakeFiles/semestral.dir/CCell.cpp.s
-.PHONY : CCell.cpp.s
-
-CFunction.o: CFunction.cpp.o
-
-.PHONY : CFunction.o
+.PHONY : src/CCell.o
 
 # target to build an object file
-CFunction.cpp.o:
-	$(MAKE) -f CMakeFiles/semestral.dir/build.make CMakeFiles/semestral.dir/CFunction.cpp.o
-.PHONY : CFunction.cpp.o
+src/CCell.cpp.o:
+	$(MAKE) -f CMakeFiles/semestral.dir/build.make CMakeFiles/semestral.dir/src/CCell.cpp.o
+.PHONY : src/CCell.cpp.o
 
-CFunction.i: CFunction.cpp.i
+src/CCell.i: src/CCell.cpp.i
 
-.PHONY : CFunction.i
+.PHONY : src/CCell.i
 
 # target to preprocess a source file
-CFunction.cpp.i:
-	$(MAKE) -f CMakeFiles/semestral.dir/build.make CMakeFiles/semestral.dir/CFunction.cpp.i
-.PHONY : CFunction.cpp.i
+src/CCell.cpp.i:
+	$(MAKE) -f CMakeFiles/semestral.dir/build.make CMakeFiles/semestral.dir/src/CCell.cpp.i
+.PHONY : src/CCell.cpp.i
 
-CFunction.s: CFunction.cpp.s
+src/CCell.s: src/CCell.cpp.s
 
-.PHONY : CFunction.s
+.PHONY : src/CCell.s
 
 # target to generate assembly for a file
-CFunction.cpp.s:
-	$(MAKE) -f CMakeFiles/semestral.dir/build.make CMakeFiles/semestral.dir/CFunction.cpp.s
-.PHONY : CFunction.cpp.s
+src/CCell.cpp.s:
+	$(MAKE) -f CMakeFiles/semestral.dir/build.make CMakeFiles/semestral.dir/src/CCell.cpp.s
+.PHONY : src/CCell.cpp.s
 
-CNumber.o: CNumber.cpp.o
+src/CFunction.o: src/CFunction.cpp.o
 
-.PHONY : CNumber.o
+.PHONY : src/CFunction.o
 
 # target to build an object file
-CNumber.cpp.o:
-	$(MAKE) -f CMakeFiles/semestral.dir/build.make CMakeFiles/semestral.dir/CNumber.cpp.o
-.PHONY : CNumber.cpp.o
+src/CFunction.cpp.o:
+	$(MAKE) -f CMakeFiles/semestral.dir/build.make CMakeFiles/semestral.dir/src/CFunction.cpp.o
+.PHONY : src/CFunction.cpp.o
 
-CNumber.i: CNumber.cpp.i
+src/CFunction.i: src/CFunction.cpp.i
 
-.PHONY : CNumber.i
+.PHONY : src/CFunction.i
 
 # target to preprocess a source file
-CNumber.cpp.i:
-	$(MAKE) -f CMakeFiles/semestral.dir/build.make CMakeFiles/semestral.dir/CNumber.cpp.i
-.PHONY : CNumber.cpp.i
+src/CFunction.cpp.i:
+	$(MAKE) -f CMakeFiles/semestral.dir/build.make CMakeFiles/semestral.dir/src/CFunction.cpp.i
+.PHONY : src/CFunction.cpp.i
 
-CNumber.s: CNumber.cpp.s
+src/CFunction.s: src/CFunction.cpp.s
 
-.PHONY : CNumber.s
+.PHONY : src/CFunction.s
 
 # target to generate assembly for a file
-CNumber.cpp.s:
-	$(MAKE) -f CMakeFiles/semestral.dir/build.make CMakeFiles/semestral.dir/CNumber.cpp.s
-.PHONY : CNumber.cpp.s
+src/CFunction.cpp.s:
+	$(MAKE) -f CMakeFiles/semestral.dir/build.make CMakeFiles/semestral.dir/src/CFunction.cpp.s
+.PHONY : src/CFunction.cpp.s
 
-CString.o: CString.cpp.o
+src/CNumber.o: src/CNumber.cpp.o
 
-.PHONY : CString.o
+.PHONY : src/CNumber.o
 
 # target to build an object file
-CString.cpp.o:
-	$(MAKE) -f CMakeFiles/semestral.dir/build.make CMakeFiles/semestral.dir/CString.cpp.o
-.PHONY : CString.cpp.o
+src/CNumber.cpp.o:
+	$(MAKE) -f CMakeFiles/semestral.dir/build.make CMakeFiles/semestral.dir/src/CNumber.cpp.o
+.PHONY : src/CNumber.cpp.o
 
-CString.i: CString.cpp.i
+src/CNumber.i: src/CNumber.cpp.i
 
-.PHONY : CString.i
+.PHONY : src/CNumber.i
 
 # target to preprocess a source file
-CString.cpp.i:
-	$(MAKE) -f CMakeFiles/semestral.dir/build.make CMakeFiles/semestral.dir/CString.cpp.i
-.PHONY : CString.cpp.i
+src/CNumber.cpp.i:
+	$(MAKE) -f CMakeFiles/semestral.dir/build.make CMakeFiles/semestral.dir/src/CNumber.cpp.i
+.PHONY : src/CNumber.cpp.i
 
-CString.s: CString.cpp.s
+src/CNumber.s: src/CNumber.cpp.s
 
-.PHONY : CString.s
+.PHONY : src/CNumber.s
 
 # target to generate assembly for a file
-CString.cpp.s:
-	$(MAKE) -f CMakeFiles/semestral.dir/build.make CMakeFiles/semestral.dir/CString.cpp.s
-.PHONY : CString.cpp.s
+src/CNumber.cpp.s:
+	$(MAKE) -f CMakeFiles/semestral.dir/build.make CMakeFiles/semestral.dir/src/CNumber.cpp.s
+.PHONY : src/CNumber.cpp.s
 
-main.o: main.cpp.o
+src/CString.o: src/CString.cpp.o
 
-.PHONY : main.o
+.PHONY : src/CString.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/semestral.dir/build.make CMakeFiles/semestral.dir/main.cpp.o
-.PHONY : main.cpp.o
+src/CString.cpp.o:
+	$(MAKE) -f CMakeFiles/semestral.dir/build.make CMakeFiles/semestral.dir/src/CString.cpp.o
+.PHONY : src/CString.cpp.o
 
-main.i: main.cpp.i
+src/CString.i: src/CString.cpp.i
 
-.PHONY : main.i
+.PHONY : src/CString.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/semestral.dir/build.make CMakeFiles/semestral.dir/main.cpp.i
-.PHONY : main.cpp.i
+src/CString.cpp.i:
+	$(MAKE) -f CMakeFiles/semestral.dir/build.make CMakeFiles/semestral.dir/src/CString.cpp.i
+.PHONY : src/CString.cpp.i
 
-main.s: main.cpp.s
+src/CString.s: src/CString.cpp.s
 
-.PHONY : main.s
+.PHONY : src/CString.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/semestral.dir/build.make CMakeFiles/semestral.dir/main.cpp.s
-.PHONY : main.cpp.s
+src/CString.cpp.s:
+	$(MAKE) -f CMakeFiles/semestral.dir/build.make CMakeFiles/semestral.dir/src/CString.cpp.s
+.PHONY : src/CString.cpp.s
+
+src/main.o: src/main.cpp.o
+
+.PHONY : src/main.o
+
+# target to build an object file
+src/main.cpp.o:
+	$(MAKE) -f CMakeFiles/semestral.dir/build.make CMakeFiles/semestral.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
+
+src/main.i: src/main.cpp.i
+
+.PHONY : src/main.i
+
+# target to preprocess a source file
+src/main.cpp.i:
+	$(MAKE) -f CMakeFiles/semestral.dir/build.make CMakeFiles/semestral.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
+
+src/main.s: src/main.cpp.s
+
+.PHONY : src/main.s
+
+# target to generate assembly for a file
+src/main.cpp.s:
+	$(MAKE) -f CMakeFiles/semestral.dir/build.make CMakeFiles/semestral.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
 
 # Help Target
 help:
@@ -267,21 +267,21 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... semestral"
 	@echo "... edit_cache"
-	@echo "... CCell.o"
-	@echo "... CCell.i"
-	@echo "... CCell.s"
-	@echo "... CFunction.o"
-	@echo "... CFunction.i"
-	@echo "... CFunction.s"
-	@echo "... CNumber.o"
-	@echo "... CNumber.i"
-	@echo "... CNumber.s"
-	@echo "... CString.o"
-	@echo "... CString.i"
-	@echo "... CString.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... src/CCell.o"
+	@echo "... src/CCell.i"
+	@echo "... src/CCell.s"
+	@echo "... src/CFunction.o"
+	@echo "... src/CFunction.i"
+	@echo "... src/CFunction.s"
+	@echo "... src/CNumber.o"
+	@echo "... src/CNumber.i"
+	@echo "... src/CNumber.s"
+	@echo "... src/CString.o"
+	@echo "... src/CString.i"
+	@echo "... src/CString.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
 .PHONY : help
 
 

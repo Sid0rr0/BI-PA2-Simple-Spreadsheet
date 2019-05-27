@@ -43,10 +43,10 @@ RM = /opt/clion-2019.1/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/hung/pa2/semestral
+CMAKE_SOURCE_DIR = /home/hung/pa2/lethanhh
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/hung/pa2/semestral/cmake-build-debug
+CMAKE_BINARY_DIR = /home/hung/pa2/lethanhh/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/semestral.dir/depend.make
@@ -57,90 +57,90 @@ include CMakeFiles/semestral.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/semestral.dir/flags.make
 
-CMakeFiles/semestral.dir/main.cpp.o: CMakeFiles/semestral.dir/flags.make
-CMakeFiles/semestral.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hung/pa2/semestral/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/semestral.dir/main.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/semestral.dir/main.cpp.o -c /home/hung/pa2/semestral/main.cpp
+CMakeFiles/semestral.dir/src/main.cpp.o: CMakeFiles/semestral.dir/flags.make
+CMakeFiles/semestral.dir/src/main.cpp.o: ../src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hung/pa2/lethanhh/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/semestral.dir/src/main.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/semestral.dir/src/main.cpp.o -c /home/hung/pa2/lethanhh/src/main.cpp
 
-CMakeFiles/semestral.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/semestral.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hung/pa2/semestral/main.cpp > CMakeFiles/semestral.dir/main.cpp.i
+CMakeFiles/semestral.dir/src/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/semestral.dir/src/main.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hung/pa2/lethanhh/src/main.cpp > CMakeFiles/semestral.dir/src/main.cpp.i
 
-CMakeFiles/semestral.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/semestral.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hung/pa2/semestral/main.cpp -o CMakeFiles/semestral.dir/main.cpp.s
+CMakeFiles/semestral.dir/src/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/semestral.dir/src/main.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hung/pa2/lethanhh/src/main.cpp -o CMakeFiles/semestral.dir/src/main.cpp.s
 
-CMakeFiles/semestral.dir/CCell.cpp.o: CMakeFiles/semestral.dir/flags.make
-CMakeFiles/semestral.dir/CCell.cpp.o: ../CCell.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hung/pa2/semestral/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/semestral.dir/CCell.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/semestral.dir/CCell.cpp.o -c /home/hung/pa2/semestral/CCell.cpp
+CMakeFiles/semestral.dir/src/CCell.cpp.o: CMakeFiles/semestral.dir/flags.make
+CMakeFiles/semestral.dir/src/CCell.cpp.o: ../src/CCell.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hung/pa2/lethanhh/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/semestral.dir/src/CCell.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/semestral.dir/src/CCell.cpp.o -c /home/hung/pa2/lethanhh/src/CCell.cpp
 
-CMakeFiles/semestral.dir/CCell.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/semestral.dir/CCell.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hung/pa2/semestral/CCell.cpp > CMakeFiles/semestral.dir/CCell.cpp.i
+CMakeFiles/semestral.dir/src/CCell.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/semestral.dir/src/CCell.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hung/pa2/lethanhh/src/CCell.cpp > CMakeFiles/semestral.dir/src/CCell.cpp.i
 
-CMakeFiles/semestral.dir/CCell.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/semestral.dir/CCell.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hung/pa2/semestral/CCell.cpp -o CMakeFiles/semestral.dir/CCell.cpp.s
+CMakeFiles/semestral.dir/src/CCell.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/semestral.dir/src/CCell.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hung/pa2/lethanhh/src/CCell.cpp -o CMakeFiles/semestral.dir/src/CCell.cpp.s
 
-CMakeFiles/semestral.dir/CFunction.cpp.o: CMakeFiles/semestral.dir/flags.make
-CMakeFiles/semestral.dir/CFunction.cpp.o: ../CFunction.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hung/pa2/semestral/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/semestral.dir/CFunction.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/semestral.dir/CFunction.cpp.o -c /home/hung/pa2/semestral/CFunction.cpp
+CMakeFiles/semestral.dir/src/CFunction.cpp.o: CMakeFiles/semestral.dir/flags.make
+CMakeFiles/semestral.dir/src/CFunction.cpp.o: ../src/CFunction.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hung/pa2/lethanhh/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/semestral.dir/src/CFunction.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/semestral.dir/src/CFunction.cpp.o -c /home/hung/pa2/lethanhh/src/CFunction.cpp
 
-CMakeFiles/semestral.dir/CFunction.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/semestral.dir/CFunction.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hung/pa2/semestral/CFunction.cpp > CMakeFiles/semestral.dir/CFunction.cpp.i
+CMakeFiles/semestral.dir/src/CFunction.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/semestral.dir/src/CFunction.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hung/pa2/lethanhh/src/CFunction.cpp > CMakeFiles/semestral.dir/src/CFunction.cpp.i
 
-CMakeFiles/semestral.dir/CFunction.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/semestral.dir/CFunction.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hung/pa2/semestral/CFunction.cpp -o CMakeFiles/semestral.dir/CFunction.cpp.s
+CMakeFiles/semestral.dir/src/CFunction.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/semestral.dir/src/CFunction.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hung/pa2/lethanhh/src/CFunction.cpp -o CMakeFiles/semestral.dir/src/CFunction.cpp.s
 
-CMakeFiles/semestral.dir/CString.cpp.o: CMakeFiles/semestral.dir/flags.make
-CMakeFiles/semestral.dir/CString.cpp.o: ../CString.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hung/pa2/semestral/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/semestral.dir/CString.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/semestral.dir/CString.cpp.o -c /home/hung/pa2/semestral/CString.cpp
+CMakeFiles/semestral.dir/src/CString.cpp.o: CMakeFiles/semestral.dir/flags.make
+CMakeFiles/semestral.dir/src/CString.cpp.o: ../src/CString.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hung/pa2/lethanhh/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/semestral.dir/src/CString.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/semestral.dir/src/CString.cpp.o -c /home/hung/pa2/lethanhh/src/CString.cpp
 
-CMakeFiles/semestral.dir/CString.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/semestral.dir/CString.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hung/pa2/semestral/CString.cpp > CMakeFiles/semestral.dir/CString.cpp.i
+CMakeFiles/semestral.dir/src/CString.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/semestral.dir/src/CString.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hung/pa2/lethanhh/src/CString.cpp > CMakeFiles/semestral.dir/src/CString.cpp.i
 
-CMakeFiles/semestral.dir/CString.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/semestral.dir/CString.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hung/pa2/semestral/CString.cpp -o CMakeFiles/semestral.dir/CString.cpp.s
+CMakeFiles/semestral.dir/src/CString.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/semestral.dir/src/CString.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hung/pa2/lethanhh/src/CString.cpp -o CMakeFiles/semestral.dir/src/CString.cpp.s
 
-CMakeFiles/semestral.dir/CNumber.cpp.o: CMakeFiles/semestral.dir/flags.make
-CMakeFiles/semestral.dir/CNumber.cpp.o: ../CNumber.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hung/pa2/semestral/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/semestral.dir/CNumber.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/semestral.dir/CNumber.cpp.o -c /home/hung/pa2/semestral/CNumber.cpp
+CMakeFiles/semestral.dir/src/CNumber.cpp.o: CMakeFiles/semestral.dir/flags.make
+CMakeFiles/semestral.dir/src/CNumber.cpp.o: ../src/CNumber.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hung/pa2/lethanhh/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/semestral.dir/src/CNumber.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/semestral.dir/src/CNumber.cpp.o -c /home/hung/pa2/lethanhh/src/CNumber.cpp
 
-CMakeFiles/semestral.dir/CNumber.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/semestral.dir/CNumber.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hung/pa2/semestral/CNumber.cpp > CMakeFiles/semestral.dir/CNumber.cpp.i
+CMakeFiles/semestral.dir/src/CNumber.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/semestral.dir/src/CNumber.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hung/pa2/lethanhh/src/CNumber.cpp > CMakeFiles/semestral.dir/src/CNumber.cpp.i
 
-CMakeFiles/semestral.dir/CNumber.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/semestral.dir/CNumber.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hung/pa2/semestral/CNumber.cpp -o CMakeFiles/semestral.dir/CNumber.cpp.s
+CMakeFiles/semestral.dir/src/CNumber.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/semestral.dir/src/CNumber.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hung/pa2/lethanhh/src/CNumber.cpp -o CMakeFiles/semestral.dir/src/CNumber.cpp.s
 
 # Object files for target semestral
 semestral_OBJECTS = \
-"CMakeFiles/semestral.dir/main.cpp.o" \
-"CMakeFiles/semestral.dir/CCell.cpp.o" \
-"CMakeFiles/semestral.dir/CFunction.cpp.o" \
-"CMakeFiles/semestral.dir/CString.cpp.o" \
-"CMakeFiles/semestral.dir/CNumber.cpp.o"
+"CMakeFiles/semestral.dir/src/main.cpp.o" \
+"CMakeFiles/semestral.dir/src/CCell.cpp.o" \
+"CMakeFiles/semestral.dir/src/CFunction.cpp.o" \
+"CMakeFiles/semestral.dir/src/CString.cpp.o" \
+"CMakeFiles/semestral.dir/src/CNumber.cpp.o"
 
 # External object files for target semestral
 semestral_EXTERNAL_OBJECTS =
 
-semestral: CMakeFiles/semestral.dir/main.cpp.o
-semestral: CMakeFiles/semestral.dir/CCell.cpp.o
-semestral: CMakeFiles/semestral.dir/CFunction.cpp.o
-semestral: CMakeFiles/semestral.dir/CString.cpp.o
-semestral: CMakeFiles/semestral.dir/CNumber.cpp.o
+semestral: CMakeFiles/semestral.dir/src/main.cpp.o
+semestral: CMakeFiles/semestral.dir/src/CCell.cpp.o
+semestral: CMakeFiles/semestral.dir/src/CFunction.cpp.o
+semestral: CMakeFiles/semestral.dir/src/CString.cpp.o
+semestral: CMakeFiles/semestral.dir/src/CNumber.cpp.o
 semestral: CMakeFiles/semestral.dir/build.make
 semestral: CMakeFiles/semestral.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/hung/pa2/semestral/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable semestral"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/hung/pa2/lethanhh/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable semestral"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/semestral.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -153,6 +153,6 @@ CMakeFiles/semestral.dir/clean:
 .PHONY : CMakeFiles/semestral.dir/clean
 
 CMakeFiles/semestral.dir/depend:
-	cd /home/hung/pa2/semestral/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/hung/pa2/semestral /home/hung/pa2/semestral /home/hung/pa2/semestral/cmake-build-debug /home/hung/pa2/semestral/cmake-build-debug /home/hung/pa2/semestral/cmake-build-debug/CMakeFiles/semestral.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/hung/pa2/lethanhh/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/hung/pa2/lethanhh /home/hung/pa2/lethanhh /home/hung/pa2/lethanhh/cmake-build-debug /home/hung/pa2/lethanhh/cmake-build-debug /home/hung/pa2/lethanhh/cmake-build-debug/CMakeFiles/semestral.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/semestral.dir/depend
 
