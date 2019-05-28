@@ -8,10 +8,14 @@ int main() {
 
     CNumber n1(4);
     CString s1("Hello World!");
-    CFunction f1("=sin(3)");
+    CFunction f1("=Sin(3)");
+    CFunction f2("=cin(3)");
 
-    std::cout << n1 << " " << s1 << std::endl;
+    std::cout << "----------------------------" << std::endl;
+    std::cout << n1 << std::endl;
+    std::cout << s1 << std::endl;
     std::cout << f1 << std::endl;
+    std::cout << f2 << std::endl;
 
 
     return 0;

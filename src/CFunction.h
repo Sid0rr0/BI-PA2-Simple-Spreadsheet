@@ -12,28 +12,33 @@
 
 class CFunction : public CCell{
 public:
-    //CFunction(std::string mOperation, double mVal);
-    CFunction(std::string  mInput);
+    enum m_Functions{SIN, COS, LOG, SQRT, ABS};
+
+    explicit CFunction(std::string mInput);
 
     ~CFunction() override;
 
-    void Print (std::ostream & os) const override;
+    void Print(std::ostream & os) const override;
 
-    void PrintValue (std::ostream & os) const;
+    void PrintValue(std::ostream & os) const;
 
     //bool IsNumber () const override;
 
-    CType CellType () const override;
+    CType CellType() const override;
 
-    int ParseInput(const std::string& input);
+    bool ParseInput(const std::string& input);
+
+    bool getResult();
+
+    bool isSupportedFunction(const std::string &func) const;
 
     friend std::ostream &operator<<(std::ostream &os, const CFunction &function);
 
 private:
     std::string m_Input;
-    std::string m_Operation;
-    double m_Value;
-    double m_Result;
+    std::string m_Name;
+    double m_Value{};
+    double m_Result{};
 };
 
 
