@@ -23,7 +23,7 @@ void CFunction::Print (std::ostream & os) const {
     os << this->m_Input;
 }
 
-void CFunction::PrintValue(std::ostream &os) const {
+void CFunction::PrintResult(std::ostream &os) const {
     os << this->m_Result;
 }
 
@@ -110,7 +110,7 @@ std::ostream &operator<<(std::ostream &os, const CFunction &function) {
         return os;
     }
 
-    function.PrintValue(os);
+    function.PrintResult(os);
     return os;
 }
 
