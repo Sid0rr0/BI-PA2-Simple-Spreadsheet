@@ -13,7 +13,7 @@ Program will detect loop and won't allow expressions that would induce them
 
 The spreadsheet will be able to be saved to a file in csv format (following basic rules written here: https://en.wikipedia.org/wiki/Comma-separated_values)
 
-Finally the spreadsheet will implement aggregatin functions such as: =AVG(D3:G5), =MAX(A1:A15), =COUNT(C5:D6)
+Finally the spreadsheet will implement aggregation functions such as: =AVG(D3:G5), =MAX(A1:A15), =COUNT(C5:D6)
 
 
 

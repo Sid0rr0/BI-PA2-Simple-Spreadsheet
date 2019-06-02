@@ -5,7 +5,7 @@ compile: lethanhh
 		
 
 lethanhh:
-		g++ src/main.cpp src/CCell.cpp src/CFunction.cpp src/CNumber.cpp src/CString.cpp -o lethanhh
+		g++ src/main.cpp src/CCell.cpp src/CFunction.cpp src/CNumber.cpp src/CString.cpp src/COperation.cpp -o lethanhh
 
 run: compile
 		./lethanhh
