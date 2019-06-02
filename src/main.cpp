@@ -4,6 +4,7 @@
 #include "CString.h"
 #include "CFunction.h"
 #include "COperation.h"
+#include "CTable.h"
 
 int main() {
 
@@ -18,6 +19,9 @@ int main() {
     std::cout << s1 << std::endl;
     std::cout << f1 << std::endl;
     std::cout << f2 << std::endl;
+    std::cout << o1 << std::endl;
+
+    CTable t1;
 
 
     return 0;

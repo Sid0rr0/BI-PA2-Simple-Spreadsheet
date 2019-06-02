@@ -10,7 +10,7 @@
 
 class CCell {
 public:
-    enum CType {FUNC, NUM, STR};
+    enum CType {FUNC, NUM, STR, OP};
 
     /**
      * Constructor
