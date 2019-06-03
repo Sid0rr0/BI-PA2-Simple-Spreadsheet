@@ -7,9 +7,9 @@ all: compile
 compile: lethanhh
 	
 
-lethanhh: build/main.o build/CCell.o build/CFunction.o build/CNumber.o build/CString.o build/COperation.o build/CTable.o
+lethanhh: build/main.o build/CCell.o build/CFunction.o build/CNumber.o build/CString.o build/COperation.o build/CTable.o build/CCursor.o
 		mkdir -p build
-		g++ build/main.o build/CCell.o build/CFunction.o build/CNumber.o build/CString.o build/COperation.o build/CTable.o -lncurses -o lethanhh
+		g++ build/main.o build/CCell.o build/CFunction.o build/CNumber.o build/CString.o build/COperation.o build/CTable.o build/CCursor.o -lncurses -o lethanhh
 
 run: compile
 		./lethanhh
@@ -18,7 +18,7 @@ clean:
 		rm -rf ./lethanhh
 		rm -r ./build
 
-build/main.o: src/CCell.cpp src/CFunction.cpp src/CNumber.cpp src/CString.cpp src/COperation.cpp src/CTable.cpp
+build/main.o: src/CCell.cpp src/CFunction.cpp src/CNumber.cpp src/CString.cpp src/COperation.cpp src/CTable.cpp src/CCursor.cpp
 		mkdir -p build
 		g++ $(FLAGS) src/main.cpp -o build/main.o
 
@@ -45,3 +45,7 @@ build/COperation.o: src/COperation.cpp
 build/CTable.o: src/CTable.cpp
 		mkdir -p build
 		g++ $(FLAGS) src/CTable.cpp -o build/CTable.o
+
+build/CCursor.o: src/CCursor.cpp
+		mkdir -p build
+		g++ $(FLAGS) src/CCursor.cpp -o build/CCursor.o

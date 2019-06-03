@@ -6,8 +6,8 @@
 #include <ncurses.h>
 
 CTable::CTable(){
-    initscr();
-    cbreak();
+    /*initscr();
+    cbreak();*/
 
     if(has_colors()) {
         start_color();
@@ -21,8 +21,8 @@ CTable::CTable(){
     DrawCoordinates(this->m_YMax, this->m_XMax);
     DrawVerticalLines(this->m_YMax, this->m_XMax);
 
-    getch();
-    endwin();
+    //getch();
+    //endwin();
 }
 
 void CTable::DrawCoordinates(int yMax, int xMax) {

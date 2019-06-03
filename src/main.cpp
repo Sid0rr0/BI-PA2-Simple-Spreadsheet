@@ -5,6 +5,7 @@
 #include "CFunction.h"
 #include "COperation.h"
 #include "CTable.h"
+#include "CCursor.h"
 
 int main() {
 
@@ -21,8 +22,15 @@ int main() {
     std::cout << f2 << std::endl;
     std::cout << o1 << std::endl;
 
+    initscr();
+    cbreak();
     CTable t1;
+    auto * c = new CCursor(' ', stdscr);
+    while (c->Move() != 'x') {
+        c->Display();
+        refresh();
+    }
 
-
+    endwin();
     return 0;
 }
