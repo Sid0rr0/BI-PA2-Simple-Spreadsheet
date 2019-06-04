@@ -41,6 +41,13 @@ public:
     bool getResult();
 
     /**
+     * Parses the input string
+     * @param input
+     * @return bool
+     */
+    bool ParseInput(const std::string& input);
+
+    /**
      * Overloaded output operator
      * @param os
      * @param function

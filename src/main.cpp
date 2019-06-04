@@ -31,10 +31,9 @@ int main() {
     char arr[50];
     while (key != 'x') {
         key = c->Move();
-        if(key == 10) {
-            for (char & j : arr) {
+        if(key == 10) { //ENTER
+            for (char & j : arr)
                 j = ' ';
-            }
             i = 0, y = 0, x = 7;
             move(y, x++);
             while(true) {
@@ -50,7 +49,7 @@ int main() {
                     if(x < 7)
                         x = 7;
                     mvprintw(y, x, " ");
-                } else {
+                } else if (32 <= key && key <= 126){
                     arr[i++] = (char) key;
                     mvprintw(y, x++, "%c", key);
                 }
@@ -66,6 +65,9 @@ int main() {
         c->Display();
         refresh();
     }
+
+    //todo ukladat si to 2D pole?
+    //todo kazda bunka teda set rodicu
 
     endwin();
     return 0;

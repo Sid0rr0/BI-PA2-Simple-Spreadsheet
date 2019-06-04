@@ -1,7 +1,11 @@
 #include <utility>
+#include <iostream>
+#include <math.h>
 #include "COperation.h"
 
 COperation::COperation(std::string mInput): m_Input(std::move(mInput)) {
+    getResult();
+    ParseInput(m_Input);
     getResult();
 }
 
@@ -25,7 +29,54 @@ void COperation::PrintResult(std::ostream &os) const {
 }
 
 bool COperation::getResult() {
-    this->m_Result = 0;
+    if(m_Operator == '+')
+        m_Result = m_OperandA + m_OperandB;
+    else if (m_Operator == '-')
+        m_Result = m_OperandA - m_OperandB;
+    else if (m_Operator == '*')
+        m_Result = m_OperandA * m_OperandB;
+    else if (m_Operator == '/') {
+        if(m_OperandB != 0)
+            m_Result = m_OperandA /  m_OperandB;
+        else
+            return false;
+    }
+    else if (m_Operator == '^')
+        m_Result = pow(m_OperandA, m_OperandB);
+
+    return true;
+}
+
+bool COperation::ParseInput(const std::string &input) {
+    auto start = input.find('=') + 1;
+
+
+    auto end = input.find('+');
+    if(end == std::string::npos) {
+        end = input.find('-');
+        if(end == std::string::npos) {
+            end = input.find('*');
+            if(end == std::string::npos) {
+                end = input.find('/');
+                if(end == std::string::npos) {
+                    end = input.find('^');
+                    m_Operator = '^';
+                } else
+                    m_Operator = '/';
+            } else
+                m_Operator = '*';
+        } else
+            m_Operator = '-';
+    } else
+        m_Operator = '+';
+
+    m_OperandA = std::stod(input.substr(start, end - start));
+    m_OperandB = std::stod(input.substr(end));
+
+    /*std::cout << "------------------------" << std::endl;
+    std::cout << m_Operator << std::endl;
+    std::cout << m_OperandA << std::endl;
+    std::cout << m_OperandB << std::endl;*/
 
     return true;
 }
