@@ -24,9 +24,45 @@ int main() {
 
     initscr();
     cbreak();
+    noecho();
     CTable t1;
     auto * c = new CCursor(' ', stdscr);
-    while (c->Move() != 'x') {
+    int key = 0, x, y, i;
+    char arr[50];
+    while (key != 'x') {
+        key = c->Move();
+        if(key == 10) {
+            for (char & j : arr) {
+                j = ' ';
+            }
+            i = 0, y = 0, x = 7;
+            move(y, x++);
+            while(true) {
+                key = wgetch(stdscr);
+                if(key == 10)
+                    break;
+                else if (key == KEY_BACKSPACE) {
+                    i--;
+                    if(i <= 0)
+                        i = 0;
+                    arr[i] = '\0';
+                    x--;
+                    if(x < 7)
+                        x = 7;
+                    mvprintw(y, x, " ");
+                } else {
+                    arr[i++] = (char) key;
+                    mvprintw(y, x++, "%c", key);
+                }
+            }
+            move(0, 7);
+            hline(' ', getmaxx(stdscr));
+            move(1, 8);
+            hline(' ', getmaxx(stdscr));
+            arr[i] = '\0';
+            mvprintw(1, 8, arr);
+        }
+
         c->Display();
         refresh();
     }

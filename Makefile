@@ -11,7 +11,7 @@ lethanhh: build/main.o build/CCell.o build/CFunction.o build/CNumber.o build/CSt
 		mkdir -p build
 		g++ build/main.o build/CCell.o build/CFunction.o build/CNumber.o build/CString.o build/COperation.o build/CTable.o build/CCursor.o -lncurses -o lethanhh
 
-run: compile
+run: clean compile
 		./lethanhh
 
 clean:

@@ -34,7 +34,7 @@ void CCursor::MoveDown() {
 void CCursor::MoveUp() {
     m_YLoc -= 2;
     if(m_YLoc < 6)
-        m_YLoc = m_YMax - (m_YMax % 2) + 1;
+        m_YLoc = m_YMax - (m_YMax % 2);
 }
 
 int CCursor::Move() {
@@ -54,6 +54,9 @@ int CCursor::Move() {
         case KEY_RIGHT:
             MoveRight();
             break;
+/*        case KEY_ENTER:
+            Input();
+            break;*/
         default:
             break;
     }
@@ -64,3 +67,4 @@ int CCursor::Move() {
 void CCursor::Display() {
     mvwaddch(m_CurrWin, m_YLoc, m_XLoc, m_Cursor);
 }
+

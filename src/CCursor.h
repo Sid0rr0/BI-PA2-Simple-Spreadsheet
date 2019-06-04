@@ -20,6 +20,7 @@ public:
     void MoveRight();
     int Move();
     void Display();
+    //void Input();
 
 private:
     int m_XLoc, m_YLoc;

@@ -15,7 +15,10 @@ CTable::CTable(){
     }
 
     getmaxyx(stdscr, this->m_YMax, this->m_XMax);
-    printw("%d %d", this->m_YMax, this->m_XMax);
+    //printw("%d %d", this->m_YMax, this->m_XMax);
+
+    addstr("Input: ");
+    mvaddstr(1, 0, "Output: ");
 
     DrawHorizontalLines(this->m_YMax, this->m_XMax);
     DrawCoordinates(this->m_YMax, this->m_XMax);
