@@ -1,6 +1,7 @@
 #include <utility>
 #include <iostream>
 #include <math.h>
+#include <sstream>
 #include "COperation.h"
 
 COperation::COperation(std::string mInput): m_Input(std::move(mInput)) {
@@ -71,7 +72,7 @@ bool COperation::ParseInput(const std::string &input) {
         m_Operator = '+';
 
     m_OperandA = std::stod(input.substr(start, end - start));
-    m_OperandB = std::stod(input.substr(end));
+    m_OperandB = std::stod(input.substr(end + 1));
 
     /*std::cout << "------------------------" << std::endl;
     std::cout << m_Operator << std::endl;
@@ -79,4 +80,10 @@ bool COperation::ParseInput(const std::string &input) {
     std::cout << m_OperandB << std::endl;*/
 
     return true;
+}
+
+std::string COperation::GetOutput() const {
+    std::ostringstream oss;
+    oss << m_Result;
+    return oss.str();
 }

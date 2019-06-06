@@ -47,8 +47,9 @@ public:
      */
     virtual CType CellType () const = 0;
 
-private:
+    virtual std::string GetOutput () const;
 
+private:
 };
 
 

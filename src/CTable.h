@@ -1,18 +1,20 @@
 //
 // Created by hung on 2.6.19.
 //
-#include <vector>
-#include <string>
 
 #ifndef LETHANHH_CTABLE_H
 #define LETHANHH_CTABLE_H
 
 #include <ncurses.h>
 #include <string>
+#include <vector>
+#include "CCell.h"
 
 class CTable {
 public:
     CTable();
+
+    virtual ~CTable();
 
     void DrawCoordinates(int yMax, int xMax);
     void DrawHorizontalLines(int yMax, int xMax);
@@ -31,7 +33,8 @@ private:
     int m_Y{}, m_X{};
     /*std::pair<int, int> m_CurrCoor;
     std::pair<int, int> m_MaxCoor;*/
-    std::vector<std::vector<std::string>> m_Array;
+    //std::vector<std::vector<CCell*>> m_Array;
+    CCell*** m_Array;
 };
 
 

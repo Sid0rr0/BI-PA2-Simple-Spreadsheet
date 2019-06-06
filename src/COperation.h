@@ -55,6 +55,9 @@ public:
      */
     friend std::ostream &operator<<(std::ostream &os, const COperation &operation);
 
+
+    std::string GetOutput() const override;
+
 private:
     std::string m_Input;
     char m_Operator{};

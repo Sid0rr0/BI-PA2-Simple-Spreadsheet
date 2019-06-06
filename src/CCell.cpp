@@ -14,3 +14,7 @@ std::ostream &operator<<(std::ostream &os, const CCell &cell) {
     cell.Print(os);
     return os;
 }
+
+std::string CCell::GetOutput() const {
+    return "";
+}

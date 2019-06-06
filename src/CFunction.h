@@ -70,6 +70,8 @@ public:
      */
     friend std::ostream &operator<<(std::ostream &os, const CFunction &function);
 
+    std::string GetOutput() const override;
+
 private:
     std::string m_Input;
     std::string m_Name;

@@ -9,11 +9,14 @@
 
 int main() {
 
-    CNumber n1(4);
+    CNumber n1("4");
     CString s1("Hello World!");
     CFunction f1("=Sin(3)");
     CFunction f2("=cin(3)");
     COperation o1("=3+4");
+    COperation o2("=3-4");
+    COperation o3("=3/4");
+    COperation o4("=3*4");
 
     std::cout << "----------------------------" << std::endl;
     std::cout << n1 << std::endl;
@@ -21,6 +24,9 @@ int main() {
     std::cout << f1 << std::endl;
     std::cout << f2 << std::endl;
     std::cout << o1 << std::endl;
+    std::cout << o2 << std::endl;
+    std::cout << o3 << std::endl;
+    std::cout << o4 << std::endl;
 
     initscr();
     cbreak();
@@ -79,17 +85,25 @@ int main() {
         move(3, 0);
         hline(' ', getmaxx(stdscr));
         printw("Y: %d, X: %d", fakeCoo.first, fakeCoo.second);
+
         c->Display();
         refresh();
     }
 
 
-    //todo pouzivat pair?
-    //todo kdyz se zmackne enter tak do inputu se napise to co bylo uz v bunce
-    //v outputu se vzdycky bude zobrazovat co je raw v bunce?
-    //todo rozdelit na vice oken?
+    //todo linkovani
+    //todo cykly
+    //todo agregacni fce
+    //todo ukladani do souboru
+
     //todo kazda bunka teda set rodicu
 
+
+    //todo kdyz se zmackne enter tak do inputu se napise to co bylo uz v bunce
+    //todo v outputu se vzdycky bude zobrazovat co je raw v bunce?
+
+    //todo pouzivat pair?
+    //todo rozdelit na vice oken?
 
     delete c;
     endwin();

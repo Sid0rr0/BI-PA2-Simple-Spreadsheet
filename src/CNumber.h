@@ -10,7 +10,7 @@
 
 class CNumber : public CCell{
 public:
-    CNumber(double mVal);
+    CNumber(std::string mInput);
 
     ~CNumber() override;
 
@@ -22,8 +22,11 @@ public:
 
     friend std::ostream &operator<<(std::ostream &os, const CNumber &number);
 
+
+    std::string GetOutput() const override;
 private:
-    double m_Val;
+    double m_Result{};
+    std::string m_Input;
 };
 
 

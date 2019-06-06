@@ -23,8 +23,10 @@ public:
 
     friend std::ostream &operator<<(std::ostream &os, const CString &string);
 
+    std::string GetOutput() const override;
+
 private:
-    std::string m_Val;
+    std::string m_Input;
 };
 
 

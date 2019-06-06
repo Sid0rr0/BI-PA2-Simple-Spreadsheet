@@ -1,8 +1,11 @@
 #include <utility>
 #include <iostream>
 #include <cmath>
+#include <string>
 #include <algorithm>
+#include <sstream>
 #include "CFunction.h"
+
 
 CFunction::CFunction(std::string mInput): m_Input(std::move(mInput)){
     if(this->m_Input.at(0) != '=') {
@@ -112,6 +115,12 @@ std::ostream &operator<<(std::ostream &os, const CFunction &function) {
 
     function.PrintResult(os);
     return os;
+}
+
+std::string CFunction::GetOutput() const {
+    std::ostringstream oss;
+    oss << m_Result;
+    return oss.str();
 }
 
 
