@@ -87,3 +87,15 @@ std::string COperation::GetOutput() const {
     oss << m_Result;
     return oss.str();
 }
+
+void COperation::AddChild(const std::string &child) {
+
+}
+
+bool COperation::HasChildren() {
+    return false;
+}
+
+std::set<std::string> COperation::GetChildren() {
+    return std::set<std::string>();
+}

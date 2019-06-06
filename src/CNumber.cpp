@@ -32,6 +32,16 @@ std::string CNumber::GetOutput() const {
     return m_Input;
 }
 
-/*bool CNumber::IsNumber() const {
-    return true;
-}*/
+void CNumber::AddChild(const std::string& child) {
+    this->childern.insert(child);
+}
+
+bool CNumber::HasChildren() {
+
+    return !this->childern.empty();
+}
+
+std::set<std::string> CNumber::GetChildren() {
+    return this->childern;
+}
+

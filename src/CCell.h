@@ -7,6 +7,7 @@
 
 
 #include <ostream>
+#include <set>
 
 class CCell {
 public:
@@ -48,6 +49,12 @@ public:
     virtual CType CellType () const = 0;
 
     virtual std::string GetOutput () const;
+
+    virtual void AddChild(const std::string& child) = 0;
+
+    virtual bool HasChildren() = 0;
+
+    virtual std::set<std::string> GetChildren() = 0;
 
 private:
 };

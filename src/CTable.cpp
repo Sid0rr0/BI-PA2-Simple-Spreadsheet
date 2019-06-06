@@ -172,12 +172,19 @@ std::pair<int, int> CTable::GetCoordinates(WINDOW * window) {
 bool CTable::SaveCell(WINDOW * window, const std::string& content) {
 
     std::pair<int, int> coord = GetCoordinates(window);
+    char* check;
 
     if(content.empty()) {
         return true;
     }
 
-    if(content.at(0) == '=') {
+    //todo pokud ma deti tak je updatuj
+
+    //if(m_Array[coord.second][coord.first]->HasChildren())
+        //todo bud predavat pointer nebo udelat fci na souradnice
+        //todo pak asi pres SaveCell updatovat je
+
+    if(content.at(0) == '=') { //is Func or Operation
         if(isdigit(content.at(1))) {
             delete(m_Array[coord.second][coord.first]);
             m_Array[coord.second][coord.first] = new COperation(content);
@@ -185,18 +192,41 @@ bool CTable::SaveCell(WINDOW * window, const std::string& content) {
         }
 
         delete(m_Array[coord.second][coord.first]);
-        m_Array[coord.second][coord.first] = new CFunction(content);
+
+        auto start = content.find('(')+1;
+        auto end = content.find(')');
+        std::string argument = content.substr(start, end - start);
+    mvprintw(0, 110, "lfsf: %s", argument.c_str());
+        if(IsNumber(argument))
+            m_Array[coord.second][coord.first] = new CFunction(content);
+        else {
+            int xCoor = argument.at(0) - 'A';
+            argument.erase(0, 1);
+            int yCoor = std::strtol(argument.c_str(), &check, 10) - 1;
+    mvprintw(0, 120, "ss: %d, %d", yCoor, xCoor);
+    mvprintw(0, 130, "co input: %s", (m_Array[yCoor][xCoor]->GetOutput()).c_str());
+            /*std::string newString = content;
+            newString.replace(start, end, std::string(m_Array[yCoor][xCoor]->GetOutput()));
+            newString += ")";
+    mvprintw(0, 150, "lfsf: %s", newString.c_str());
+            m_Array[coord.second][coord.first] = new CFunction(newString);*/
+            m_Array[yCoor][xCoor]->AddChild(content.substr(start, end - start));
+            m_Array[coord.second][coord.first] = new CFunction(content, m_Array[yCoor][xCoor]);
+        }
+
+
 
     } else {
-        char* check;
+
         std::strtod(content.c_str(), &check);
         std::string s = std::string(check);
-        if(s.empty()) {
+        if(s.empty()) { //is number
             delete(m_Array[coord.second][coord.first]);
             m_Array[coord.second][coord.first] = new CNumber(content);
             return true;
         }
 
+        //is string
         delete(m_Array[coord.second][coord.first]);
         m_Array[coord.second][coord.first] = new CString(content);
     }
@@ -246,5 +276,19 @@ void CTable::DisplayContent() {
         l += 2;
     }
 }
+
+std::string CTable::GetOutput(int y, int x) {
+    return m_Array[y][x]->GetOutput();
+}
+
+bool CTable::IsNumber(const std::string& s) {
+    char* check;
+    std::strtod(s.c_str(), &check);
+    std::string c = std::string(check);
+
+    return c.empty();
+}
+
+
 
 

@@ -25,6 +25,12 @@ public:
 
     std::string GetOutput() const override;
 
+    void AddChild(const std::string& child) override;
+
+    bool HasChildren() override;
+
+    std::set<std::string> GetChildren() override;
+
 private:
     std::string m_Input;
 };

@@ -8,6 +8,7 @@
 
 #include <ostream>
 #include "CCell.h"
+#include "CNumber.h"
 #include <string>
 
 class CFunction : public CCell{
@@ -19,6 +20,8 @@ public:
      * @param mInput
      */
     explicit CFunction(std::string mInput);
+
+    CFunction(std::string mInput, CCell* cell);
 
     ~CFunction() override;
 
@@ -72,11 +75,18 @@ public:
 
     std::string GetOutput() const override;
 
+    void AddChild(const std::string& child);
+
+    bool HasChildren() override;
+
+    std::set<std::string> GetChildren() override;
+
 private:
     std::string m_Input;
     std::string m_Name;
     double m_Value{};
     double m_Result{};
+    CCell * cell{};
 };
 
 

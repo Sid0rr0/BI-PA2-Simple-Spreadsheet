@@ -4,7 +4,10 @@
 #include <string>
 #include <algorithm>
 #include <sstream>
+#include <cstdlib>
 #include "CFunction.h"
+#include "CTable.h"
+#include "CNumber.h"
 
 
 CFunction::CFunction(std::string mInput): m_Input(std::move(mInput)){
@@ -19,6 +22,19 @@ CFunction::CFunction(std::string mInput): m_Input(std::move(mInput)){
     else
         getResult();
 }
+
+CFunction::CFunction(std::string mInput, CCell *cell): m_Input(std::move(mInput)){
+    this->cell = cell;
+    std::cout << "***" << this->cell->GetOutput() << "***" << std::endl;
+
+    ParseInput(this->m_Input);
+
+    if(!isSupportedFunction(this->m_Name))
+        this->m_Result = 0;
+    else
+        getResult();
+}
+
 
 CFunction::~CFunction() = default;
 
@@ -48,7 +64,33 @@ bool CFunction::ParseInput(const std::string& input) {
 
     start = input.find('(')+1;
     end = input.find(')');
-    m_Value = std::stod(input.substr(start, end - start));
+
+    std::string argument = input.substr(start, end - start);
+    char* check;
+    if(isdigit(argument.at(0))) {
+        m_Value = std::stod(input.substr(start, end - start));
+        std::cout << "$$$" << m_Value << "$$$" << std::endl;
+        //todo check if number
+    } else {
+        /*int xCoor = argument.at(0) - 'A';
+        argument.erase(0, 1);
+
+        int yCoor = std::strtol(argument.c_str(), &check, 10) - 1;
+        std::cout << "============== " << yCoor << " " << xCoor << std::endl;
+        std::string s = std::string(check);
+        if(!s.empty()) {
+            return false;
+        }
+
+        CTable t;
+        m_Value = std::strtod((t.GetOutput(yCoor, xCoor)).c_str(), &check);*/
+        m_Value = std::strtod(cell->GetOutput().c_str(), &check);
+        std::cout << "###" << m_Value << "###" << std::endl;
+        //todo check if num
+
+    }
+
+    //m_Value = std::stod(input.substr(start, end - start));
     //std::cout << m_Value << std::endl;
 
     /*while (end != std::string::npos)
@@ -122,6 +164,20 @@ std::string CFunction::GetOutput() const {
     oss << m_Result;
     return oss.str();
 }
+
+bool CFunction::HasChildren() {
+    return false;
+}
+
+std::set<std::string> CFunction::GetChildren() {
+    return std::set<std::string>();
+}
+
+void CFunction::AddChild(const std::string &child) {
+
+}
+
+
 
 
 

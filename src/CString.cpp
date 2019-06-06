@@ -22,6 +22,15 @@ std::string CString::GetOutput() const {
     return m_Input;
 }
 
-/*bool CString::IsNumber() const {
+bool CString::HasChildren() {
     return false;
-}*/
+}
+
+void CString::AddChild(const std::string &child) {
+
+}
+
+std::set<std::string> CString::GetChildren() {
+    return std::set<std::string>();
+}
+

@@ -28,6 +28,9 @@ public:
     bool SaveCell(WINDOW * window, const std::string& content);
     void PrintArr();
     void DisplayContent();
+    std::string GetOutput(int y, int x);
+
+    bool IsNumber(const std::string& s);
 private:
     int m_YMax{}, m_XMax{};
     int m_Y{}, m_X{};

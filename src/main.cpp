@@ -37,7 +37,7 @@ int main() {
     char arr[50];
     while (key != 27) {
         key = c->Move();
-        if(key == 10) { //ENTER
+        if(key == 10 || (32 <= key && key <= 126) || key == 9) { //ENTER
             for (char & j : arr)
                 j = ' ';
             i = 0, y = 0, x = 7;
@@ -73,6 +73,7 @@ int main() {
         }
 
         c->Display();
+        refresh();
         t1.DisplayContent();
 
         getyx(stdscr, y, x);
@@ -92,9 +93,12 @@ int main() {
 
 
     //todo linkovani
+        //todo predelam do ciselnych souradnic a getOutput(y, x) dostanu to cislo - asi ne
+        //todo kdyz se zmeni bunka tak se vytvori uplne nova -- predtim checknout jestli nemela nejaky deti a jestli jo tak je updatovat
     //todo cykly
     //todo agregacni fce
     //todo ukladani do souboru
+    //todo osetrit vstupy
 
     //todo kazda bunka teda set rodicu
 
