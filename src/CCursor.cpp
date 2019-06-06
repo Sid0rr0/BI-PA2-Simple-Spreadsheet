@@ -8,33 +8,34 @@
 CCursor::CCursor(char mCursor, WINDOW *mCurrWin) : m_Cursor(mCursor), m_CurrWin(mCurrWin) {
     getmaxyx(m_CurrWin, m_YMax, m_XMax);
     keypad(m_CurrWin, true);
-    m_XLoc = 11;
-    m_YLoc = 6;
-    move(m_YLoc, m_XLoc);
+    m_X = 12;
+    m_Y = 6;
+    move(m_Y, m_X);
+    m_X = 11;
 }
 
 void CCursor::MoveRight() {
-    m_XLoc += 10;
-    if(m_XLoc > m_XMax)
-        m_XLoc = 11;
+    m_X += 10;
+    if(m_X > m_XMax)
+        m_X = 11;
 }
 
 void CCursor::MoveLeft() {
-    m_XLoc -= 10;
-    if(m_XLoc < 3)
-        m_XLoc = m_XMax - (m_XMax % 10) + 1;
+    m_X -= 10;
+    if(m_X < 3)
+        m_X = m_XMax - (m_XMax % 10) + 1;
 }
 
 void CCursor::MoveDown() {
-    m_YLoc += 2;
-    if(m_YLoc > m_YMax)
-        m_YLoc = 6;
+    m_Y += 2;
+    if(m_Y > m_YMax)
+        m_Y = 6;
 }
 
 void CCursor::MoveUp() {
-    m_YLoc -= 2;
-    if(m_YLoc < 6)
-        m_YLoc = m_YMax - (m_YMax % 2);
+    m_Y -= 2;
+    if(m_Y < 6)
+        m_Y = m_YMax - (m_YMax % 2);
 }
 
 int CCursor::Move() {
@@ -65,6 +66,8 @@ int CCursor::Move() {
 }
 
 void CCursor::Display() {
-    mvwaddch(m_CurrWin, m_YLoc, m_XLoc, m_Cursor);
+    mvwaddch(m_CurrWin, m_Y, m_X, m_Cursor);
 }
+
+
 

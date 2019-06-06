@@ -29,7 +29,7 @@ int main() {
     auto * c = new CCursor(' ', stdscr);
     int key = 0, x, y, i;
     char arr[50];
-    while (key != 'x') {
+    while (key != 27) {
         key = c->Move();
         if(key == 10) { //ENTER
             for (char & j : arr)
@@ -54,21 +54,46 @@ int main() {
                     mvprintw(y, x++, "%c", key);
                 }
             }
+            arr[i] = '\0';
+
             move(0, 7);
             hline(' ', getmaxx(stdscr));
             move(1, 8);
             hline(' ', getmaxx(stdscr));
-            arr[i] = '\0';
             mvprintw(1, 8, arr);
+
+            c->Display();
+            t1.SaveCell(stdscr, std::string(arr));
         }
 
+        c->Display();
+        t1.DisplayContent();
+
+        getyx(stdscr, y, x);
+        move(2, 0);
+        hline(' ', getmaxx(stdscr));
+        printw("Y: %d, X: %d", y, x);
+
+        c->Display();
+        std::pair<int, int> fakeCoo = t1.GetCoordinates(stdscr);
+        move(3, 0);
+        hline(' ', getmaxx(stdscr));
+        printw("Y: %d, X: %d", fakeCoo.first, fakeCoo.second);
         c->Display();
         refresh();
     }
 
-    //todo ukladat si to 2D pole?
+
+    //todo pouzivat pair?
+    //todo kdyz se zmackne enter tak do inputu se napise to co bylo uz v bunce
+    //v outputu se vzdycky bude zobrazovat co je raw v bunce?
+    //todo rozdelit na vice oken?
     //todo kazda bunka teda set rodicu
 
+
+    delete c;
     endwin();
+    t1.PrintArr();
+
     return 0;
 }

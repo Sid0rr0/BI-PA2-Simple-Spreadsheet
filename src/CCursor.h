@@ -8,6 +8,7 @@
 
 #include <curses.h>
 #include <ncurses.h>
+#include <utility>
 
 class CCursor {
 
@@ -22,8 +23,9 @@ public:
     void Display();
     //void Input();
 
+
 private:
-    int m_XLoc, m_YLoc;
+    int m_X, m_Y;
     int m_XMax, m_YMax;
     char m_Cursor;
     WINDOW * m_CurrWin;
