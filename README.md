@@ -5,8 +5,8 @@ The goal of this semestral work is to make simple spreadsheet is C++.
 
 The spreadsheet will suport following things:
 	1) stings, numbers and functions in cells
-	2) basic operators such as +, -, \*, /
-	3) various basic math functions: sin, cos, abs, log, sqrt, sum
+	2) basic operators such as +, -, \*, /, ^
+	3) various basic math functions: sin, cos, abs, log, sum
 	4) links to other cells (=A2\*4)
 
 Program will detect loop and won't allow expressions that would induce them
