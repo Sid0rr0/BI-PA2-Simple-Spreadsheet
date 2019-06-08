@@ -15,14 +15,37 @@ class CCursor {
 public:
     CCursor(char mCursor, WINDOW *mCurrWin);
 
+    /**
+     * Moves the cursor up
+     */
     void MoveUp();
-    void MoveDown();
-    void MoveLeft();
-    void MoveRight();
-    int Move();
-    void Display();
-    //void Input();
 
+    /**
+     * Moves the cursor down
+     */
+    void MoveDown();
+
+    /**
+     * Moves the cursor left
+     */
+    void MoveLeft();
+
+    /**
+     * Moves the cursor right
+     */
+    void MoveRight();
+
+    /**
+     * Reads the user input and moves the cursor accordingly
+     *
+     * @return integer value of pressed key
+     */
+    int Move();
+
+    /**
+     * Prints the cursor to the terminal
+     */
+    void Display();
 
 private:
     int m_X, m_Y;

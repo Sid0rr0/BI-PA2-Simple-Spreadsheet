@@ -11,6 +11,9 @@
 
 class CCell {
 public:
+    /**
+     * Enum of various cell types
+     */
     enum CType {FUNC, NUM, STR, OP};
 
     /**
@@ -32,14 +35,12 @@ public:
 
     /**
      * Overloaded output operator
-     *
+
      * @param os output stream
      * @param cell CCell that will be printed
      * @return output stream
      */
     friend std::ostream &operator<<(std::ostream &os, const CCell &cell);
-
-    //virtual bool IsNumber () const = 0;
 
     /**
      * Returns type of cell
@@ -48,14 +49,38 @@ public:
      */
     virtual CType CellType () const = 0;
 
+    /**
+     * Retuns string that will be printed to console
+     * @return std::string output
+     */
     virtual std::string GetOutput () const;
 
+    /**
+     * Adds coordinates of the child cell to vector
+     *
+     * @param child string coordinate of the child cell
+     */
     virtual void AddChild(const std::string& child) = 0;
 
+    /**
+     * Checks if cell has children
+     *
+     * @return true if has one or more children
+     */
     virtual bool HasChildren() = 0;
 
+    /**
+     * Return vector of coordinates of the children
+     *
+     * @return vector of strings of children
+     */
     virtual std::vector<std::string> GetChildren() = 0;
 
+    /**
+     * Updates the cell if parent cell was altered
+     *
+     * @param content value that the parent cell was changed to
+     */
     virtual void Update(const std::string& content) = 0;
 
 private:
