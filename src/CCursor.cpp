@@ -55,9 +55,9 @@ int CCursor::Move() {
         case KEY_RIGHT:
             MoveRight();
             break;
-/*        case KEY_ENTER:
-            Input();
-            break;*/
+        case 9:
+            MoveRight();
+            break;
         default:
             break;
     }

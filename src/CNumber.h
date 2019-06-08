@@ -6,12 +6,11 @@
 #define SEMESTRAL_CNUMBER_H
 
 #include <ostream>
-#include <set>
 #include "CCell.h"
 
 class CNumber : public CCell{
 public:
-    CNumber(std::string mInput);
+    CNumber(std::string mInput, int mXPos, int mYPos);
 
     ~CNumber() override;
 
@@ -29,12 +28,23 @@ public:
 
     bool HasChildren() override;
 
-    std::set<std::string> GetChildren() override;
+    std::vector<std::string> GetChildren() override;
+
+    int getMXPos() const;
+
+    void setMXPos(int mXPos);
+
+    int getMYPos() const;
+
+    void setMYPos(int mYPos);
+
+    void Update(const std::string &content) override;
 
 private:
     double m_Result{};
     std::string m_Input;
-    std::set<std::string> childern;
+    std::vector<std::string> childern;
+    int m_xPos, m_yPos;
 };
 
 

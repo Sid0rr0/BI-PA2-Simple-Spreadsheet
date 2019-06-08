@@ -7,7 +7,7 @@
 
 
 #include <ostream>
-#include <set>
+#include <vector>
 
 class CCell {
 public:
@@ -54,7 +54,9 @@ public:
 
     virtual bool HasChildren() = 0;
 
-    virtual std::set<std::string> GetChildren() = 0;
+    virtual std::vector<std::string> GetChildren() = 0;
+
+    virtual void Update(const std::string& content) = 0;
 
 private:
 };

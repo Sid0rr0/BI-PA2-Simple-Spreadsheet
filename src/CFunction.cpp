@@ -169,12 +169,18 @@ bool CFunction::HasChildren() {
     return false;
 }
 
-std::set<std::string> CFunction::GetChildren() {
-    return std::set<std::string>();
+std::vector<std::string> CFunction::GetChildren() {
+    return std::vector<std::string>();
 }
 
 void CFunction::AddChild(const std::string &child) {
 
+}
+
+void CFunction::Update(const std::string &content) {
+    m_Value = std::stod(content);
+    getResult();
+    std::cout << "!!!!!!!!" << m_Result << "!!!!!!!!!!" << std::endl;
 }
 
 

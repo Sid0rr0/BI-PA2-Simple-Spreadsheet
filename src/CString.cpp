@@ -30,7 +30,11 @@ void CString::AddChild(const std::string &child) {
 
 }
 
-std::set<std::string> CString::GetChildren() {
-    return std::set<std::string>();
+std::vector<std::string> CString::GetChildren() {
+    return std::vector<std::string>();
+}
+
+void CString::Update(const std::string &content) {
+
 }
 

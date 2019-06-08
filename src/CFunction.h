@@ -10,6 +10,7 @@
 #include "CCell.h"
 #include "CNumber.h"
 #include <string>
+#include <vector>
 
 class CFunction : public CCell{
 public:
@@ -79,7 +80,9 @@ public:
 
     bool HasChildren() override;
 
-    std::set<std::string> GetChildren() override;
+    std::vector<std::string> GetChildren() override;
+
+    void Update(const std::string &content) override;
 
 private:
     std::string m_Input;

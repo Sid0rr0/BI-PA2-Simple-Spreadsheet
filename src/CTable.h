@@ -24,8 +24,11 @@ public:
     void DrawHorizontalLines(std::pair<int, int> mMaxCoor);
     void DrawVerticalLines(std::pair<int, int> mMaxCoor);*/
 
-    std::pair<int, int> GetCoordinates(WINDOW * window);
+    std::pair<int, int> GetFakeCoordinates(WINDOW *window);
+    std::pair<int, int> GetFakeCoordinates(std::string link);
+    std::string GetReadCoord(std::pair<int, int> self);
     bool SaveCell(WINDOW * window, const std::string& content);
+    void UpdateCell(WINDOW *window, const std::string& content, std::pair<int, int> parentCoord);
     void PrintArr();
     void DisplayContent();
     std::string GetOutput(int y, int x);

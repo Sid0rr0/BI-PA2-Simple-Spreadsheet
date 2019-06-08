@@ -29,7 +29,9 @@ public:
 
     bool HasChildren() override;
 
-    std::set<std::string> GetChildren() override;
+    std::vector<std::string> GetChildren() override;
+
+    void Update(const std::string &content) override;
 
 private:
     std::string m_Input;

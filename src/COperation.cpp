@@ -96,6 +96,10 @@ bool COperation::HasChildren() {
     return false;
 }
 
-std::set<std::string> COperation::GetChildren() {
-    return std::set<std::string>();
+std::vector<std::string> COperation::GetChildren() {
+    return std::vector<std::string>();
+}
+
+void COperation::Update(const std::string &content) {
+
 }

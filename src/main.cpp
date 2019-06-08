@@ -7,9 +7,11 @@
 #include "CTable.h"
 #include "CCursor.h"
 
+#define MAX_LEN 50
+
 int main() {
 
-    CNumber n1("4");
+    //CNumber n1("4");
     CString s1("Hello World!");
     CFunction f1("=Sin(3)");
     CFunction f2("=cin(3)");
@@ -19,7 +21,7 @@ int main() {
     COperation o4("=3*4");
 
     std::cout << "----------------------------" << std::endl;
-    std::cout << n1 << std::endl;
+    //std::cout << n1 << std::endl;
     std::cout << s1 << std::endl;
     std::cout << f1 << std::endl;
     std::cout << f2 << std::endl;
@@ -34,14 +36,25 @@ int main() {
     CTable t1;
     auto * c = new CCursor(' ', stdscr);
     int key = 0, x, y, i;
-    char arr[50];
+    char arr[MAX_LEN];
     while (key != 27) {
+
         key = c->Move();
-        if(key == 10 || (32 <= key && key <= 126) || key == 9) { //ENTER
+        if(key == 10 || (32 <= key && key <= 126)) { //ENTER
+
             for (char & j : arr)
                 j = ' ';
             i = 0, y = 0, x = 7;
             move(y, x++);
+
+            /*std::pair<int, int> fakeCoo = t1.GetFakeCoordinates(stdscr);
+            std::string content = t1.GetOutput(fakeCoo.second, fakeCoo.first);
+            mvprintw(0, 7, content.c_str());
+            for (; i < content.length(); ++i) {
+                arr[i] = content.at(i);
+                x++;
+            }*/
+
             while(true) {
                 key = wgetch(stdscr);
                 if(key == 10)
@@ -50,7 +63,7 @@ int main() {
                     i--;
                     if(i <= 0)
                         i = 0;
-                    arr[i] = '\0';
+                    arr[i] = ' ';
                     x--;
                     if(x < 7)
                         x = 7;
@@ -61,6 +74,8 @@ int main() {
                 }
             }
             arr[i] = '\0';
+            //todo pokud je kurzor na zacatku tak se ulozi ""
+            //todo premazat bunky na zacatku - jinak se bude zobrazovat to stary
 
             move(0, 7);
             hline(' ', getmaxx(stdscr));
@@ -72,9 +87,20 @@ int main() {
             t1.SaveCell(stdscr, std::string(arr));
         }
 
+        /*x = 7;
+        std::pair<int, int> fakeCoo = t1.GetFakeCoordinates(stdscr);
+        std::string content = t1.GetOutput(fakeCoo.second, fakeCoo.first);
+        mvprintw(0, 7, content.c_str());
+        for (i = 0; i < content.length(); ++i) {
+            arr[i] = content.at(i);
+            x++;
+        }*/
+
+        /*c->Display();
+        refresh();*/
         c->Display();
-        refresh();
         t1.DisplayContent();
+        refresh();
 
         getyx(stdscr, y, x);
         move(2, 0);
@@ -82,7 +108,7 @@ int main() {
         printw("Y: %d, X: %d", y, x);
 
         c->Display();
-        std::pair<int, int> fakeCoo = t1.GetCoordinates(stdscr);
+        std::pair<int, int> fakeCoo = t1.GetFakeCoordinates(stdscr);
         move(3, 0);
         hline(' ', getmaxx(stdscr));
         printw("Y: %d, X: %d", fakeCoo.first, fakeCoo.second);
@@ -93,8 +119,8 @@ int main() {
 
 
     //todo linkovani
-        //todo predelam do ciselnych souradnic a getOutput(y, x) dostanu to cislo - asi ne
-        //todo kdyz se zmeni bunka tak se vytvori uplne nova -- predtim checknout jestli nemela nejaky deti a jestli jo tak je updatovat
+        //todo dodelat pro ostatni
+        //todo pridat linkovani pro jenom bunky
     //todo cykly
     //todo agregacni fce
     //todo ukladani do souboru

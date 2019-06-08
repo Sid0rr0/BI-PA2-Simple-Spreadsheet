@@ -9,7 +9,7 @@
 #include <utility>
 
 
-CNumber::CNumber(std::string mInput) : m_Input(std::move(mInput)) {
+CNumber::CNumber(std::string mInput, int mXPos, int mYPos) : m_Input(std::move(mInput)), m_xPos(mXPos), m_yPos(mYPos) {
     m_Result = std::stod(m_Input);
 }
 
@@ -33,7 +33,7 @@ std::string CNumber::GetOutput() const {
 }
 
 void CNumber::AddChild(const std::string& child) {
-    this->childern.insert(child);
+    this->childern.push_back(child);
 }
 
 bool CNumber::HasChildren() {
@@ -41,7 +41,27 @@ bool CNumber::HasChildren() {
     return !this->childern.empty();
 }
 
-std::set<std::string> CNumber::GetChildren() {
+std::vector<std::string> CNumber::GetChildren() {
     return this->childern;
+}
+
+int CNumber::getMXPos() const {
+    return m_xPos;
+}
+
+void CNumber::setMXPos(int mXPos) {
+    m_xPos = mXPos;
+}
+
+int CNumber::getMYPos() const {
+    return m_yPos;
+}
+
+void CNumber::setMYPos(int mYPos) {
+    m_yPos = mYPos;
+}
+
+void CNumber::Update(const std::string &content) {
+    m_Result = std::stod(content);
 }
 
