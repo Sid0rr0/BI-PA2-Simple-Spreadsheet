@@ -35,11 +35,24 @@ int main() {
     noecho();
     CTable t1;
     auto * c = new CCursor(' ', stdscr);
-    int key = 0, x, y, i;
+    int key = 0, x = 0, y = 0, i, xOrig, yOrig;
     char arr[MAX_LEN];
     while (key != 27) {
-
         key = c->Move();
+
+        /*getyx(stdscr, yOrig, xOrig);
+
+        std::pair<int, int> fakeCoo = t1.GetFakeCoordinates(stdscr);
+        std::string content = t1.GetOutput(fakeCoo.second, fakeCoo.first);
+        move(0, 7);
+        hline(' ', getmaxx(stdscr));
+        mvprintw(0, 7, content.c_str());
+        for (i = 0; i < content.length(); ++i) {
+            arr[i] = content.at(i);
+            x++;
+        }
+        move(yOrig, xOrig);*/
+
         if(key == 10 || (32 <= key && key <= 126)) { //ENTER
 
             for (char & j : arr)

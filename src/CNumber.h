@@ -40,10 +40,19 @@ public:
 
     void Update(const std::string &content) override;
 
+    void AddParent(const std::string &parent) override;
+
+    bool HasParents() override;
+
+    std::set<std::string> GetParents() override;
+
+    void CycleSwitch() override;
+
 private:
     double m_Result{};
     std::string m_Input;
-    std::vector<std::string> childern;
+    std::vector<std::string> m_Children;
+    std::set<std::string> m_Parents;
     int m_xPos, m_yPos;
 };
 

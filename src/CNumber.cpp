@@ -33,16 +33,16 @@ std::string CNumber::GetOutput() const {
 }
 
 void CNumber::AddChild(const std::string& child) {
-    this->childern.push_back(child);
+    this->m_Children.push_back(child);
 }
 
 bool CNumber::HasChildren() {
 
-    return !this->childern.empty();
+    return !this->m_Children.empty();
 }
 
 std::vector<std::string> CNumber::GetChildren() {
-    return this->childern;
+    return this->m_Children;
 }
 
 int CNumber::getMXPos() const {
@@ -63,5 +63,21 @@ void CNumber::setMYPos(int mYPos) {
 
 void CNumber::Update(const std::string &content) {
     m_Result = std::stod(content);
+}
+
+void CNumber::AddParent(const std::string &parent) {
+    m_Parents.insert(parent);
+}
+
+bool CNumber::HasParents() {
+    return !m_Parents.empty();
+}
+
+std::set<std::string> CNumber::GetParents() {
+    return m_Parents;
+}
+
+void CNumber::CycleSwitch() {
+
 }
 

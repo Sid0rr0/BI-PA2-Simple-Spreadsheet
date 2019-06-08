@@ -23,11 +23,11 @@ std::string CString::GetOutput() const {
 }
 
 bool CString::HasChildren() {
-    return false;
+    return !m_Children.empty();
 }
 
 void CString::AddChild(const std::string &child) {
-
+    m_Children.push_back(child);
 }
 
 std::vector<std::string> CString::GetChildren() {
@@ -35,6 +35,22 @@ std::vector<std::string> CString::GetChildren() {
 }
 
 void CString::Update(const std::string &content) {
+    m_Input = content;
+}
+
+void CString::AddParent(const std::string &parent) {
+
+}
+
+bool CString::HasParents() {
+    return false;
+}
+
+std::set<std::string> CString::GetParents() {
+    return std::set<std::string>();
+}
+
+void CString::CycleSwitch() {
 
 }
 

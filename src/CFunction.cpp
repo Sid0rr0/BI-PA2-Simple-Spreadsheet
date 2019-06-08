@@ -15,6 +15,8 @@ CFunction::CFunction(std::string mInput): m_Input(std::move(mInput)){
         std::cout << "Not a function" << std::endl;
     }
 
+    m_Cycle = false;
+
     ParseInput(this->m_Input);
 
     if(!isSupportedFunction(this->m_Name))
@@ -26,6 +28,21 @@ CFunction::CFunction(std::string mInput): m_Input(std::move(mInput)){
 CFunction::CFunction(std::string mInput, CCell *cell): m_Input(std::move(mInput)){
     this->cell = cell;
     std::cout << "***" << this->cell->GetOutput() << "***" << std::endl;
+
+    m_Cycle = false;
+
+    ParseInput(this->m_Input);
+
+    if(!isSupportedFunction(this->m_Name))
+        this->m_Result = 0;
+    else
+        getResult();
+}
+
+CFunction::CFunction(std::string mInput, const std::string& mValue): m_Input(std::move(mInput)){
+    m_Value = std::stod(mValue);
+
+    m_Cycle = false;
 
     ParseInput(this->m_Input);
 
@@ -69,7 +86,7 @@ bool CFunction::ParseInput(const std::string& input) {
     char* check;
     if(isdigit(argument.at(0))) {
         m_Value = std::stod(input.substr(start, end - start));
-        std::cout << "$$$" << m_Value << "$$$" << std::endl;
+        //std::cout << "$$$" << m_Value << "$$$" << std::endl;
         //todo check if number
     } else {
         /*int xCoor = argument.at(0) - 'A';
@@ -84,9 +101,14 @@ bool CFunction::ParseInput(const std::string& input) {
 
         CTable t;
         m_Value = std::strtod((t.GetOutput(yCoor, xCoor)).c_str(), &check);*/
+
+        //todo z cell
         m_Value = std::strtod(cell->GetOutput().c_str(), &check);
         std::cout << "###" << m_Value << "###" << std::endl;
         //todo check if num
+
+        //todo pokud to nebude z cell tak v konstruktoru 2. parametr strting = m_Value
+
 
     }
 
@@ -160,28 +182,49 @@ std::ostream &operator<<(std::ostream &os, const CFunction &function) {
 }
 
 std::string CFunction::GetOutput() const {
+    if(m_Cycle)
+        return "Cycle";
+
     std::ostringstream oss;
     oss << m_Result;
     return oss.str();
 }
 
 bool CFunction::HasChildren() {
-    return false;
+
+    return !m_Children.empty();
 }
 
 std::vector<std::string> CFunction::GetChildren() {
-    return std::vector<std::string>();
+    return m_Children;
 }
 
 void CFunction::AddChild(const std::string &child) {
-
+    m_Children.push_back(child);
 }
 
 void CFunction::Update(const std::string &content) {
     m_Value = std::stod(content);
     getResult();
-    std::cout << "!!!!!!!!" << m_Result << "!!!!!!!!!!" << std::endl;
 }
+
+void CFunction::AddParent(const std::string &parent) {
+    m_Parents.insert(parent);
+}
+
+bool CFunction::HasParents() {
+    return !m_Parents.empty();
+}
+
+std::set<std::string> CFunction::GetParents() {
+    return m_Parents;
+}
+
+void CFunction::CycleSwitch() {
+    m_Cycle = !m_Cycle;
+}
+
+
 
 
 

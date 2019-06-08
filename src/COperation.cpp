@@ -89,17 +89,33 @@ std::string COperation::GetOutput() const {
 }
 
 void COperation::AddChild(const std::string &child) {
-
+    m_Children.push_back(child);
 }
 
 bool COperation::HasChildren() {
-    return false;
+    return !m_Children.empty();
 }
 
 std::vector<std::string> COperation::GetChildren() {
-    return std::vector<std::string>();
+    return m_Children;
 }
 
 void COperation::Update(const std::string &content) {
+    //todo binarni operace jeste nevim
+}
+
+void COperation::AddParent(const std::string &parent) {
+
+}
+
+bool COperation::HasParents() {
+    return false;
+}
+
+std::set<std::string> COperation::GetParents() {
+    return std::set<std::string>();
+}
+
+void COperation::CycleSwitch() {
 
 }

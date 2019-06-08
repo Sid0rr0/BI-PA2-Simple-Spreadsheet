@@ -11,6 +11,7 @@
 #include "CNumber.h"
 #include <string>
 #include <vector>
+#include <set>
 
 class CFunction : public CCell{
 public:
@@ -21,6 +22,8 @@ public:
      * @param mInput
      */
     explicit CFunction(std::string mInput);
+
+    CFunction(std::string mInput, const std::string& mValue);
 
     CFunction(std::string mInput, CCell* cell);
 
@@ -76,7 +79,7 @@ public:
 
     std::string GetOutput() const override;
 
-    void AddChild(const std::string& child);
+    void AddChild(const std::string& child) override;
 
     bool HasChildren() override;
 
@@ -84,12 +87,23 @@ public:
 
     void Update(const std::string &content) override;
 
+    void AddParent(const std::string &parent) override;
+
+    bool HasParents() override;
+
+    std::set<std::string> GetParents() override;
+
+    void CycleSwitch() override;
+
 private:
     std::string m_Input;
     std::string m_Name;
     double m_Value{};
     double m_Result{};
+    std::vector<std::string> m_Children;
+    std::set<std::string> m_Parents;
     CCell * cell{};
+    bool m_Cycle;
 };
 
 

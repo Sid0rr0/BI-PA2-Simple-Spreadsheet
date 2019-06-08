@@ -8,6 +8,7 @@
 
 #include <ostream>
 #include <vector>
+#include <set>
 
 class CCell {
 public:
@@ -82,6 +83,15 @@ public:
      * @param content value that the parent cell was changed to
      */
     virtual void Update(const std::string& content) = 0;
+
+    virtual void AddParent(const std::string& parent) = 0;
+
+    virtual bool HasParents() = 0;
+
+    virtual std::set<std::string> GetParents() = 0;
+
+    virtual void CycleSwitch() = 0;
+
 
 private:
 };

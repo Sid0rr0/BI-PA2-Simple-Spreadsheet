@@ -66,12 +66,22 @@ public:
 
     void Update(const std::string &content) override;
 
+    void AddParent(const std::string &parent) override;
+
+    bool HasParents() override;
+
+    std::set<std::string> GetParents() override;
+
+    void CycleSwitch() override;
+
 private:
     std::string m_Input;
     char m_Operator{};
     double m_OperandA{};
     double m_OperandB{};
     double m_Result{};
+    std::vector<std::string> m_Children;
+    std::set<std::string> m_Parents;
 };
 
 
