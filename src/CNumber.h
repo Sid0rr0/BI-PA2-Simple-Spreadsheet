@@ -10,6 +10,7 @@
 
 class CNumber : public CCell{
 public:
+    CNumber(std::string mInput);
     CNumber(std::string mInput, int mXPos, int mYPos);
 
     ~CNumber() override;
@@ -23,6 +24,8 @@ public:
     friend std::ostream &operator<<(std::ostream &os, const CNumber &number);
 
     std::string GetOutput() const override;
+
+    std::string GetInput() const override;
 
     void AddChild(const std::string& child) override;
 
@@ -48,12 +51,15 @@ public:
 
     void CycleSwitch() override;
 
+    bool InCycle() override;
+
 private:
     double m_Result{};
     std::string m_Input;
     std::vector<std::string> m_Children;
     std::set<std::string> m_Parents;
     int m_xPos, m_yPos;
+    bool m_Cycle;
 };
 
 

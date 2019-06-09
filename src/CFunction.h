@@ -27,6 +27,8 @@ public:
 
     CFunction(std::string mInput, CCell* cell);
 
+    CFunction(std::string mInput, std::vector<std::string>   cells);
+
     ~CFunction() override;
 
     /**
@@ -79,6 +81,8 @@ public:
 
     std::string GetOutput() const override;
 
+    std::string GetInput() const override;
+
     void AddChild(const std::string& child) override;
 
     bool HasChildren() override;
@@ -95,6 +99,8 @@ public:
 
     void CycleSwitch() override;
 
+    bool InCycle() override;
+
 private:
     std::string m_Input;
     std::string m_Name;
@@ -102,8 +108,10 @@ private:
     double m_Result{};
     std::vector<std::string> m_Children;
     std::set<std::string> m_Parents;
+    std::vector<std::string> m_Cells;
     CCell * cell{};
     bool m_Cycle;
+    bool m_Error;
 };
 
 

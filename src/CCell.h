@@ -51,10 +51,16 @@ public:
     virtual CType CellType () const = 0;
 
     /**
-     * Retuns string that will be printed to console
+     * Returns string that will be printed to console
      * @return std::string output
      */
-    virtual std::string GetOutput () const;
+    virtual std::string GetOutput () const = 0;
+
+    /**
+     * Returns the input string
+     * @return std::string output
+     */
+    virtual std::string GetInput () const = 0;
 
     /**
      * Adds coordinates of the child cell to vector
@@ -90,7 +96,12 @@ public:
 
     virtual std::set<std::string> GetParents() = 0;
 
+    /**
+     * Changes the cycle bool if there is error and otherwise
+     */
     virtual void CycleSwitch() = 0;
+
+    virtual bool InCycle() = 0;
 
 
 private:

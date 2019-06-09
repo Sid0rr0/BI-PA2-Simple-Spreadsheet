@@ -92,7 +92,9 @@ public:
      * @param x coordinate
      * @return output string
      */
-    std::string GetOutput(int y, int x);
+    std::string GetOutput(int y, int x) const;
+
+    std::string GetInput(int y, int x) const;
 
     /**
      * Checks if the whole string can transferred into double

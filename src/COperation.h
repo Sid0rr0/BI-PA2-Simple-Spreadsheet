@@ -38,7 +38,7 @@ public:
      * Computes the result of the function
      * @return
      */
-    bool getResult();
+    bool GetResult();
 
     /**
      * Parses the input string
@@ -55,8 +55,9 @@ public:
      */
     friend std::ostream &operator<<(std::ostream &os, const COperation &operation);
 
-
     std::string GetOutput() const override;
+
+    std::string GetInput() const override;
 
     void AddChild(const std::string &child) override;
 
@@ -64,6 +65,10 @@ public:
 
     std::vector<std::string> GetChildren() override;
 
+    /**
+     *
+     * @param content both operands separated by whitespace
+     */
     void Update(const std::string &content) override;
 
     void AddParent(const std::string &parent) override;
@@ -74,6 +79,8 @@ public:
 
     void CycleSwitch() override;
 
+    bool InCycle() override;
+
 private:
     std::string m_Input;
     char m_Operator{};
@@ -82,6 +89,7 @@ private:
     double m_Result{};
     std::vector<std::string> m_Children;
     std::set<std::string> m_Parents;
+    bool m_Cycle;
 };
 
 

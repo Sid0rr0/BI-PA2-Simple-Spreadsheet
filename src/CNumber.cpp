@@ -8,9 +8,14 @@
 #include <string>
 #include <utility>
 
+CNumber::CNumber(std::string mInput) : m_Input(std::move(mInput)) {
+    m_Result = std::stod(m_Input);
+    m_Cycle = false;
+}
 
 CNumber::CNumber(std::string mInput, int mXPos, int mYPos) : m_Input(std::move(mInput)), m_xPos(mXPos), m_yPos(mYPos) {
     m_Result = std::stod(m_Input);
+    m_Cycle = false;
 }
 
 CNumber::~CNumber() = default;
@@ -29,6 +34,8 @@ CCell::CType CNumber::CellType() const {
 }
 
 std::string CNumber::GetOutput() const {
+    if(m_Cycle)
+        return "Cycle";
     return m_Input;
 }
 
@@ -78,6 +85,16 @@ std::set<std::string> CNumber::GetParents() {
 }
 
 void CNumber::CycleSwitch() {
-
+    m_Cycle = !m_Cycle;
 }
+
+std::string CNumber::GetInput() const {
+    return m_Input;
+}
+
+bool CNumber::InCycle() {
+    return m_Cycle;
+}
+
+
 

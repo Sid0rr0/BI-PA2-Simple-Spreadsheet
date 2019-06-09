@@ -11,9 +11,9 @@
 
 class CString : public CCell{
 public:
-    CString(std::string mVal);
+    explicit CString(std::string mVal);
 
-    virtual ~CString();
+    ~CString() override;
 
     void Print (std::ostream & os) const override;
 
@@ -24,6 +24,8 @@ public:
     friend std::ostream &operator<<(std::ostream &os, const CString &string);
 
     std::string GetOutput() const override;
+
+    std::string GetInput() const override;
 
     void AddChild(const std::string& child) override;
 
@@ -41,10 +43,13 @@ public:
 
     void CycleSwitch() override;
 
+    bool InCycle() override;
+
 private:
     std::string m_Input;
     std::vector<std::string> m_Children;
     std::set<std::string> m_Parents;
+    bool m_Cycle;
 };
 
 

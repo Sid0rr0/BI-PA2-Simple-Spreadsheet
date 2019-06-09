@@ -2,15 +2,17 @@
 // Created by hung on 2.6.19.
 //
 
-#include "CTable.h"
-#include "CCursor.h"
 #include <ncurses.h>
 #include <iostream>
+#include <cstdlib>
+#include "CTable.h"
+#include "CCursor.h"
+#include "CCell.h"
 #include "CNumber.h"
 #include "CString.h"
 #include "CFunction.h"
 #include "COperation.h"
-#include <cstdlib>
+
 
 
 CTable::CTable(){
@@ -181,15 +183,26 @@ void CTable::UpdateCell(std::pair<int, int> parentCoord) {
     //std::pair<int, int> coord = GetFakeCoordinates(window);
 
     auto parent = m_Array[parentCoord.second][parentCoord.first];
+
+    if(parent->InCycle())
+        return;
+
+
     //if the cell that is updated has children update is aswell
 
     auto children = parent->GetChildren();
 
     for (const auto & i : children) {
     //for (int i = 0; i < children.size(); ++i) {
+
+
         auto childCoord = GetFakeCoordinates(i);
         auto child = m_Array[childCoord.second][childCoord.first];
-        child->Update(parent->GetOutput());
+        /*if(parent->InCycle()) {
+            child->CycleSwitch();
+            continue;
+        } else*/
+            child->Update(parent->GetOutput());
 
         if(child->HasChildren()) {
             UpdateCell(childCoord);
@@ -205,8 +218,47 @@ bool CTable::SaveCell(WINDOW * window, const std::string& content) {
     char* check;
     //todo rozdelit na funkce, tahle funkce bude jenom parsovat
     if(content.empty()) {
+        //todo jeho childi ?
+        m_Array[coord.second][coord.first] = new CString("");
         return true;
     }
+
+    auto children = m_Array[coord.second][coord.first]->GetChildren();
+
+    if(!children.empty())
+        mvprintw(1, 170, "HAS CHILDREN");
+    else
+        mvprintw(1, 170, "NO  CHILDREN");
+
+    if(content.at(0) == '=' && content.find(':') != std::string::npos) {
+        auto start = content.find('(')+1;
+        auto end = content.find(':');
+        std::string startCoordS = content.substr(start, end - start);
+        start = content.find(':')+1;
+        end = content.find(')');
+        std::string endCoordS = content.substr(start, end - start);
+
+        mvprintw(1, 190, "%s %s", startCoordS.c_str(), endCoordS.c_str());
+
+        auto startCoord = GetFakeCoordinates(startCoordS);
+        auto endCoord = GetFakeCoordinates(endCoordS);
+
+        std::vector<std::string> cells;
+        for (int i = startCoord.second; i <= endCoord.second; ++i) {
+            for (int j = startCoord.first; j <= endCoord.first; ++j) {
+                cells.push_back(m_Array[i][j]->GetOutput());
+            }
+        }
+
+        mvprintw(0, 190, "cells: %d", cells.size());
+
+        delete(m_Array[coord.second][coord.first]);
+        //m_Array[coord.second][coord.first] = new CString(content);
+        m_Array[coord.second][coord.first] = new CFunction(content, cells);
+        return true;
+
+    }
+
 
     if(content.at(0) == '=') { //is Func or Operation
         if(isdigit(content.at(1))) {
@@ -214,54 +266,59 @@ bool CTable::SaveCell(WINDOW * window, const std::string& content) {
             m_Array[coord.second][coord.first] = new COperation(content);
 
         } else {
-            delete(m_Array[coord.second][coord.first]);
-
             auto start = content.find('(')+1;
             auto end = content.find(')');
             std::string argument = content.substr(start, end - start);
         mvprintw(0, 110, "value: %s", argument.c_str());
-            if(IsNumber(argument))
+            if(IsNumber(argument)) {
+                delete(m_Array[coord.second][coord.first]);
                 m_Array[coord.second][coord.first] = new CFunction(content);
-            else {
-                /*int xParentCoord = argument.at(0) - 'A';
-                argument.erase(0, 1);
-                int yParentCoord = std::strtol(argument.c_str(), &check, 10) - 1;*/
+            } else {
                 auto parentCoord = GetFakeCoordinates(argument);
                 int xParentCoord = parentCoord.first;
                 int yParentCoord = parentCoord.second;
 
+                if(GetReadCoord(coord) == GetReadCoord(parentCoord)) {
+                    delete(m_Array[coord.second][coord.first]);
+                    m_Array[coord.second][coord.first] = new CString(content);
+                    m_Array[coord.second][coord.first]->CycleSwitch();
+                    return true;
+                }
+
         mvprintw(0, 120, "ss: %d, %d", yParentCoord, xParentCoord);
         mvprintw(0, 130, "co input: %s", (m_Array[yParentCoord][xParentCoord]->GetOutput()).c_str());
-                /*std::string newString = content;
-                newString.replace(start, end, std::string(m_Array[yParentCoord][xParentCoord]->GetOutput()));
-                newString += ")";
-        mvprintw(0, 150, "lfsf: %s", newString.c_str());
-                m_Array[coord.second][coord.first] = new CFunction(newString);*/
+        mvprintw(0, 150, "GetReadCoord: %s", GetReadCoord(coord).c_str());
 
-                mvprintw(0, 150, "GetReadCoord: %s", GetReadCoord(coord).c_str());
-                m_Array[yParentCoord][xParentCoord]->AddChild(GetReadCoord(coord)); //pridam parentovy child
-                m_Array[coord.second][coord.first] = new CFunction(content, m_Array[yParentCoord][xParentCoord]); //vytvorim novou fci a predam *
-                // na rodice
+                m_Array[yParentCoord][xParentCoord]->AddChild(GetReadCoord(coord)); //pridam parentovy sebe jako child
+                auto currCellParents = m_Array[coord.second][coord.first]->GetParents(); //svoje rodice
+
+                delete(m_Array[coord.second][coord.first]);
+                m_Array[coord.second][coord.first] = new CFunction(content, m_Array[yParentCoord][xParentCoord]);
+
+                currCellParents.insert(GetReadCoord(coord));
 
                 auto parentCellParents = m_Array[yParentCoord][xParentCoord]->GetParents();
                 if(m_Array[yParentCoord][xParentCoord]->HasParents()) {
                     for(const auto& i: parentCellParents) {
-                        if(m_Array[coord.second][coord.first]->GetParents().find(i) != m_Array[coord.second][coord.first]->GetParents().end()) {
+                        if(currCellParents.find(i) != currCellParents.end() && !currCellParents.empty()) {
                             mvprintw(1, 120, "ERROR0");
                             m_Array[coord.second][coord.first]->CycleSwitch();
+                            //return true;
                         }
-
                         m_Array[coord.second][coord.first]->AddParent(i);
-                        mvprintw(1, 180, "parent cp: %s", GetReadCoord(parentCoord).c_str());
+                        //mvprintw(1, 180, "parent cp: %s", GetReadCoord(parentCoord).c_str());
                     }
                 }
                 //todo pokud uz tam je tak pomoci funkce prepnout na error a vypsat ho dokud to nespravi
-                auto currCellParents = m_Array[coord.second][coord.first]->GetParents();
-                if(currCellParents.find(GetReadCoord(parentCoord)) != currCellParents.end())
-                    mvprintw(1, 120, "ERROR");
+
+                if(currCellParents.find(GetReadCoord(parentCoord)) != currCellParents.end()) {
+                    m_Array[coord.second][coord.first]->CycleSwitch();
+                    mvprintw(1, 130, "ERROR");
+                }
+
 
                 m_Array[coord.second][coord.first]->AddParent(GetReadCoord(parentCoord));
-                mvprintw(1, 140, "parent: %s", GetReadCoord(parentCoord).c_str());
+                //mvprintw(1, 140, "parent: %s", GetReadCoord(parentCoord).c_str());
             }
         }
 
@@ -271,10 +328,11 @@ bool CTable::SaveCell(WINDOW * window, const std::string& content) {
         std::string s = std::string(check);
         if(s.empty()) { //is number
 
-            if(m_Array[coord.second][coord.first]->HasChildren()) {
+            /*if(m_Array[coord.second][coord.first]->HasChildren()) {
                 auto children = m_Array[coord.second][coord.first]->GetChildren();
                 delete(m_Array[coord.second][coord.first]);
-                m_Array[coord.second][coord.first] = new CNumber(content, coord.first, coord.second);
+                //m_Array[coord.second][coord.first] = new CNumber(content, coord.first, coord.second);
+                m_Array[coord.second][coord.first] = new CNumber(content);
 
                 for(const auto &i: children) {
                     m_Array[coord.second][coord.first]->AddChild(i);
@@ -282,12 +340,16 @@ bool CTable::SaveCell(WINDOW * window, const std::string& content) {
                 UpdateCell(coord);
             } else {
                 delete(m_Array[coord.second][coord.first]);
-                m_Array[coord.second][coord.first] = new CNumber(content, coord.first, coord.second);
-            }
+                //m_Array[coord.second][coord.first] = new CNumber(content, coord.first, coord.second);
+                m_Array[coord.second][coord.first] = new CNumber(content);
+            }*/
+
+            delete(m_Array[coord.second][coord.first]);
+            m_Array[coord.second][coord.first] = new CNumber(content);
 
         } else {
             //is string
-            if(m_Array[coord.second][coord.first]->HasChildren()) {
+            /*if(m_Array[coord.second][coord.first]->HasChildren()) {
                 auto children = m_Array[coord.second][coord.first]->GetChildren();
                 delete(m_Array[coord.second][coord.first]);
                 m_Array[coord.second][coord.first] = new CString(content);
@@ -298,9 +360,19 @@ bool CTable::SaveCell(WINDOW * window, const std::string& content) {
             } else {
                 delete(m_Array[coord.second][coord.first]);
                 m_Array[coord.second][coord.first] = new CString(content);
-            }
+            }*/
+
+            delete(m_Array[coord.second][coord.first]);
+            m_Array[coord.second][coord.first] = new CString(content);
 
         }
+    }
+
+    if(!children.empty()) {
+        for(const auto &i: children) {
+            m_Array[coord.second][coord.first]->AddChild(i);
+        }
+        UpdateCell(coord);
     }
 
     return true;
@@ -333,7 +405,7 @@ void CTable::DisplayContent() {
     for (int i = 0; i < (m_YMax - 5) / 2; ++i) {
         k = 0;
         for (int j = 0; j < (m_XMax - 4) / 10; ++j) {
-            mvprintw(6 + l, 4 + k, "         ");
+            mvprintw(6 + l, 3 + k, "|         ");
             mvprintw(6 + l, 4 + k, (m_Array[i][j]->GetOutput()).c_str());
             k += 10;
         }
@@ -341,8 +413,12 @@ void CTable::DisplayContent() {
     }
 }
 
-std::string CTable::GetOutput(int y, int x) {
+std::string CTable::GetOutput(int y, int x) const{
     return m_Array[y][x]->GetOutput();
+}
+
+std::string CTable::GetInput(int y, int x) const{
+    return m_Array[y][x]->GetInput();
 }
 
 bool CTable::IsNumber(const std::string& s) {
@@ -355,11 +431,13 @@ bool CTable::IsNumber(const std::string& s) {
 
 std::pair<int, int> CTable::GetFakeCoordinates(std::string link) {
     char * check;
-    int xCoor = link.at(0) - 'A';
+    int xCoord = link.at(0) - 'A';
     link.erase(0, 1);
-    int yCoor = std::strtol(link.c_str(), &check, 10) - 1;
-    return std::pair<int, int>(xCoor, yCoor);
+    int yCoord = std::strtol(link.c_str(), &check, 10) - 1;
+    return std::pair<int, int>(xCoord, yCoord);
 }
+
+
 
 
 

@@ -5,9 +5,10 @@
 #include "COperation.h"
 
 COperation::COperation(std::string mInput): m_Input(std::move(mInput)) {
-    getResult();
+    m_Cycle = false;
+    GetResult();
     ParseInput(m_Input);
-    getResult();
+    GetResult();
 }
 
 COperation::~COperation() = default;
@@ -29,7 +30,7 @@ void COperation::PrintResult(std::ostream &os) const {
     os << this->m_Result;
 }
 
-bool COperation::getResult() {
+bool COperation::GetResult() {
     if(m_Operator == '+')
         m_Result = m_OperandA + m_OperandB;
     else if (m_Operator == '-')
@@ -83,6 +84,9 @@ bool COperation::ParseInput(const std::string &input) {
 }
 
 std::string COperation::GetOutput() const {
+    if(m_Cycle)
+        return "Cycle";
+
     std::ostringstream oss;
     oss << m_Result;
     return oss.str();
@@ -101,21 +105,33 @@ std::vector<std::string> COperation::GetChildren() {
 }
 
 void COperation::Update(const std::string &content) {
-    //todo binarni operace jeste nevim
+    char* middle;
+    m_OperandA = strtod(content.c_str(), &middle);
+    m_OperandA = strtod(middle, nullptr);
+
+    GetResult();
 }
 
 void COperation::AddParent(const std::string &parent) {
-
+    m_Parents.insert(parent);
 }
 
 bool COperation::HasParents() {
-    return false;
+    return !m_Parents.empty();
 }
 
 std::set<std::string> COperation::GetParents() {
-    return std::set<std::string>();
+    return m_Parents;
 }
 
 void COperation::CycleSwitch() {
+    m_Cycle = !m_Cycle;
+}
 
+std::string COperation::GetInput() const {
+    return m_Input;
+}
+
+bool COperation::InCycle() {
+    return m_Cycle;
 }

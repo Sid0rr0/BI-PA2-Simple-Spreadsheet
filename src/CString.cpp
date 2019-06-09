@@ -1,7 +1,9 @@
 #include <utility>
 #include "CString.h"
 
-CString::CString(std::string mVal) : m_Input(std::move(mVal)) {}
+CString::CString(std::string mVal) : m_Input(std::move(mVal)) {
+    m_Cycle = false;
+}
 
 CString::~CString() = default;
 
@@ -19,6 +21,8 @@ CCell::CType CString::CellType() const {
 }
 
 std::string CString::GetOutput() const {
+    if(m_Cycle)
+        return "Cycle";
     return m_Input;
 }
 
@@ -39,18 +43,26 @@ void CString::Update(const std::string &content) {
 }
 
 void CString::AddParent(const std::string &parent) {
-
+    m_Parents.insert(parent);
 }
 
 bool CString::HasParents() {
-    return false;
+    return !m_Parents.empty();
 }
 
 std::set<std::string> CString::GetParents() {
-    return std::set<std::string>();
+    return m_Parents;
 }
 
 void CString::CycleSwitch() {
+    m_Cycle = !m_Cycle;
+}
 
+std::string CString::GetInput() const {
+    return m_Input;
+}
+
+bool CString::InCycle() {
+    return m_Cycle;
 }
 

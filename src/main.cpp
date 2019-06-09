@@ -35,7 +35,8 @@ int main() {
     noecho();
     CTable t1;
     auto * c = new CCursor(' ', stdscr);
-    int key = 0, x = 0, y = 0, i, xOrig, yOrig;
+    int key = 0, x = 0, y = 0;
+    unsigned i;
     char arr[MAX_LEN];
     while (key != 27) {
         key = c->Move();
@@ -58,28 +59,30 @@ int main() {
             for (char & j : arr)
                 j = ' ';
             i = 0, y = 0, x = 7;
-            move(y, x++);
+            //move(y, x++);
 
-            /*std::pair<int, int> fakeCoo = t1.GetFakeCoordinates(stdscr);
-            std::string content = t1.GetOutput(fakeCoo.second, fakeCoo.first);
+            std::pair<int, int> fakeCoo = t1.GetFakeCoordinates(stdscr);
+            std::string content = t1.GetInput(fakeCoo.second, fakeCoo.first);
             mvprintw(0, 7, content.c_str());
             for (; i < content.length(); ++i) {
                 arr[i] = content.at(i);
                 x++;
-            }*/
+            }
 
             while(true) {
                 key = wgetch(stdscr);
                 if(key == 10)
                     break;
                 else if (key == KEY_BACKSPACE) {
-                    i--;
                     if(i <= 0)
                         i = 0;
+                    else
+                        i--;
                     arr[i] = ' ';
-                    x--;
-                    if(x < 7)
+                    if(x <= 7)
                         x = 7;
+                    else
+                        x--;
                     mvprintw(y, x, " ");
                 } else if (32 <= key && key <= 126){
                     arr[i++] = (char) key;
@@ -111,20 +114,20 @@ int main() {
 
         /*c->Display();
         refresh();*/
-        c->Display();
         t1.DisplayContent();
+        c->Display();
         refresh();
 
         getyx(stdscr, y, x);
         move(2, 0);
         hline(' ', getmaxx(stdscr));
-        printw("Y: %d, X: %d", y, x);
+        printw("X_Max: %d, Y_Max: %d", x, y);
 
         c->Display();
         std::pair<int, int> fakeCoo = t1.GetFakeCoordinates(stdscr);
         move(3, 0);
         hline(' ', getmaxx(stdscr));
-        printw("Y: %d, X: %d", fakeCoo.first, fakeCoo.second);
+        printw("X: %d, Y: %d", fakeCoo.first, fakeCoo.second);
 
         c->Display();
         refresh();
