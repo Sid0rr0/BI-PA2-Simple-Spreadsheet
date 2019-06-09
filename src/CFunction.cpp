@@ -15,9 +15,8 @@
 
 
 CFunction::CFunction(std::string mInput): m_Input(std::move(mInput)){
-    if(this->m_Input.at(0) != '=') {
-        std::cout << "Not a function" << std::endl;
-    }
+    if(this->m_Input.at(0) != '=')
+        m_Error = true;
 
     m_Cycle = false;
     m_Error = false;
@@ -51,23 +50,6 @@ CFunction::CFunction(std::string mInput, std::vector<std::string> cells): m_Inpu
 CFunction::CFunction(std::string mInput, CCell *cell): m_Input(std::move(mInput)){
     this->cell = cell;
     //std::cout << "***" << this->cell->GetOutput() << "***" << std::endl;
-
-    m_Cycle = false;
-    m_Error = false;
-
-    ParseInput(this->m_Input);
-
-    if(!isSupportedFunction(this->m_Name)) {
-        this->m_Result = 0;
-        m_Error = true;
-    }
-    else
-        getResult();
-}
-
-CFunction::CFunction(std::string mInput, const std::string& mValue): m_Input(std::move(mInput)){
-    m_Value = std::stod(mValue);
-
     m_Cycle = false;
     m_Error = false;
 
@@ -97,14 +79,11 @@ CCell::CType CFunction::CellType() const {
 }
 
 bool CFunction::ParseInput(const std::string& input) {
-
-
     auto start = input.find('=')+1;
     auto end = input.find('(');
 
     this->m_Name = input.substr(start, end - start);
     std::transform(this->m_Name.begin(), this->m_Name.end(), this->m_Name.begin(), ::toupper);
-    //std::cout << m_Name << std::endl;
 
     if(input.find(':') != std::string::npos)
         return true;
@@ -114,45 +93,23 @@ bool CFunction::ParseInput(const std::string& input) {
 
     std::string argument = input.substr(start, end - start);
     char* check;
-    if(isdigit(argument.at(0))) {
-        m_Value = std::stod(input.substr(start, end - start));
-        //std::cout << "$$$" << m_Value << "$$$" << std::endl;
-        //todo check if number
-    } else {
-        /*int xCoor = argument.at(0) - 'A';
-        argument.erase(0, 1);
-
-        int yCoor = std::strtol(argument.c_str(), &check, 10) - 1;
-        std::cout << "============== " << yCoor << " " << xCoor << std::endl;
-        std::string s = std::string(check);
+    std::string s;
+    std::strtod(input.substr(start, end - start).c_str(), &check);
+    s = std::string(check);
+    if(s.empty()) {
+        m_Value = std::strtod(input.substr(start, end - start).c_str(), &check);
+        s = std::string(check);
         if(!s.empty()) {
-            return false;
+            m_Error = true;
         }
-
-        CTable t;
-        m_Value = std::strtod((t.GetOutput(yCoor, xCoor)).c_str(), &check);*/
-
-        //todo z cell
+    } else {
         m_Value = std::strtod(cell->GetOutput().c_str(), &check);
+        s = std::string(check);
+        if(!s.empty()) {
+            m_Error = true;
+        }
         //std::cout << "###" << m_Value << "###" << std::endl;
-        //todo check if num
-
-        //todo pokud to nebude z cell tak v konstruktoru 2. parametr strting = m_Value
-
-
     }
-
-    //m_Value = std::stod(input.substr(start, end - start));
-    //std::cout << m_Value << std::endl;
-
-    /*while (end != std::string::npos)
-    {
-        std::cout << input.substr(start, end - start) << std::endl;
-        start = end + delimiter.length();
-        end = input.find(delimiter, start);
-    }
-
-    std::cout << input.substr(start, end) << std::endl;*/
     return true;
 }
 
@@ -228,7 +185,7 @@ bool CFunction::getResult() {
     return false;
 }
 
-bool CFunction::isSupportedFunction(const std::string &func) const {
+bool CFunction::isSupportedFunction(const std::string &func) {
     if(func == "SIN")
         return true;
     else if(func == "COS")
@@ -246,15 +203,11 @@ bool CFunction::isSupportedFunction(const std::string &func) const {
     else if(func == "COUNT")
         return true;
 
+    m_Error = true;
     return false;
 }
 
 std::ostream &operator<<(std::ostream &os, const CFunction &function) {
-    if(!function.isSupportedFunction(function.m_Name)) {
-        os << "Undefined";
-        return os;
-    }
-
     function.PrintResult(os);
     return os;
 }
@@ -302,8 +255,7 @@ std::set<std::string> CFunction::GetParents() {
 }
 
 void CFunction::CycleSwitch() {
-    //m_Cycle = !m_Cycle;
-    m_Cycle = false;
+    m_Cycle = true;
 }
 
 std::string CFunction::GetInput() const {
@@ -314,7 +266,29 @@ bool CFunction::InCycle() {
     return m_Cycle;
 }
 
+void CFunction::DeleteParent(std::string parent) {
+    for(const auto& i : m_Parents) {
+        if (i == parent)
+            m_Parents.erase(i);
+    }
+}
 
+void CFunction::DeleteChild(const std::string &child) {
+    int j = 0;
+    for(const auto& i : m_Children) {
+        if (i == child)
+            m_Children.erase(m_Children.begin()+j);
+        j++;
+    }
+}
+
+void CFunction::CycleFalse() {
+    m_Cycle = false;
+}
+
+void CFunction::ErrorTrue() {
+    m_Error = true;
+}
 
 
 

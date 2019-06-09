@@ -69,6 +69,8 @@ public:
      */
     virtual void AddChild(const std::string& child) = 0;
 
+    virtual void DeleteChild(const std::string& child) = 0;
+
     /**
      * Checks if cell has children
      *
@@ -90,17 +92,42 @@ public:
      */
     virtual void Update(const std::string& content) = 0;
 
+    /**
+     * Adds coordinates of the parent cell to vector
+     *
+     * @param parent string coordinate of the parent cell
+     */
     virtual void AddParent(const std::string& parent) = 0;
 
+    /**
+     * Checks if cell has parent
+     *
+     * @return true if has one or more parent
+     */
     virtual bool HasParents() = 0;
 
+    /**
+     * Return vector of coordinates of the parent
+     *
+     * @return vector of strings of parent
+     */
     virtual std::set<std::string> GetParents() = 0;
+
+    virtual void DeleteParent(std::string parent) = 0;
 
     /**
      * Changes the cycle bool if there is error and otherwise
      */
     virtual void CycleSwitch() = 0;
 
+    virtual void CycleFalse() = 0;
+
+    virtual void ErrorTrue() = 0;
+
+    /**
+     * Check if the cell has cyclic dependency
+     * @return true if in cycle
+     */
     virtual bool InCycle() = 0;
 
 

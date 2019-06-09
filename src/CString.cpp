@@ -3,6 +3,7 @@
 
 CString::CString(std::string mVal) : m_Input(std::move(mVal)) {
     m_Cycle = false;
+    m_Error = false;
 }
 
 CString::~CString() = default;
@@ -55,7 +56,7 @@ std::set<std::string> CString::GetParents() {
 }
 
 void CString::CycleSwitch() {
-    m_Cycle = !m_Cycle;
+    m_Cycle = true;
 }
 
 std::string CString::GetInput() const {
@@ -64,5 +65,30 @@ std::string CString::GetInput() const {
 
 bool CString::InCycle() {
     return m_Cycle;
+}
+
+void CString::DeleteParent(std::string parent) {
+    for(const auto& i : m_Parents) {
+        if (i == parent)
+            m_Parents.erase(i);
+    }
+}
+
+void CString::DeleteChild(const std::string &child) {
+    int j = 0;
+    for(const auto& i : m_Children) {
+        if (i == child)
+            m_Children.erase(m_Children.begin()+j);
+
+        j++;
+    }
+}
+
+void CString::CycleFalse() {
+    m_Cycle = false;
+}
+
+void CString::ErrorTrue() {
+    m_Error = true;
 }
 

@@ -1,6 +1,6 @@
-//
-// Created by hung on 12.5.19.
-//
+/**
+ * Class for handling number cells
+ */
 
 #ifndef SEMESTRAL_CNUMBER_H
 #define SEMESTRAL_CNUMBER_H
@@ -10,14 +10,11 @@
 
 class CNumber : public CCell{
 public:
-    CNumber(std::string mInput);
-    CNumber(std::string mInput, int mXPos, int mYPos);
+    explicit CNumber(std::string mInput);
 
     ~CNumber() override;
 
     void Print (std::ostream & os) const override;
-
-    //bool IsNumber () const override;
 
     CType CellType() const override;
 
@@ -29,17 +26,11 @@ public:
 
     void AddChild(const std::string& child) override;
 
+    void DeleteChild(const std::string &child) override;
+
     bool HasChildren() override;
 
     std::vector<std::string> GetChildren() override;
-
-    int getMXPos() const;
-
-    void setMXPos(int mXPos);
-
-    int getMYPos() const;
-
-    void setMYPos(int mYPos);
 
     void Update(const std::string &content) override;
 
@@ -51,15 +42,21 @@ public:
 
     void CycleSwitch() override;
 
+    void CycleFalse() override;
+
     bool InCycle() override;
+
+    void DeleteParent(std::string parent) override;
+
+    void ErrorTrue() override;
 
 private:
     double m_Result{};
     std::string m_Input;
     std::vector<std::string> m_Children;
     std::set<std::string> m_Parents;
-    int m_xPos, m_yPos;
     bool m_Cycle;
+    bool m_Error;
 };
 
 

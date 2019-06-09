@@ -6,9 +6,12 @@
 
 COperation::COperation(std::string mInput): m_Input(std::move(mInput)) {
     m_Cycle = false;
-    GetResult();
+    m_Error = false;
+
     ParseInput(m_Input);
-    GetResult();
+
+    if(!m_Error)
+        GetResult();
 }
 
 COperation::~COperation() = default;
@@ -52,7 +55,6 @@ bool COperation::GetResult() {
 bool COperation::ParseInput(const std::string &input) {
     auto start = input.find('=') + 1;
 
-
     auto end = input.find('+');
     if(end == std::string::npos) {
         end = input.find('-');
@@ -63,6 +65,11 @@ bool COperation::ParseInput(const std::string &input) {
                 if(end == std::string::npos) {
                     end = input.find('^');
                     m_Operator = '^';
+
+                    if(end == std::string::npos) {
+                        m_Error = true;
+                        return false;
+                    }
                 } else
                     m_Operator = '/';
             } else
@@ -73,17 +80,28 @@ bool COperation::ParseInput(const std::string &input) {
         m_Operator = '+';
 
     m_OperandA = std::stod(input.substr(start, end - start));
-    m_OperandB = std::stod(input.substr(end + 1));
 
-    /*std::cout << "------------------------" << std::endl;
-    std::cout << m_Operator << std::endl;
-    std::cout << m_OperandA << std::endl;
-    std::cout << m_OperandB << std::endl;*/
+    char * check;
+    m_OperandA = std::strtod(input.substr(start, end - start).c_str(), &check);
+    std::string s = std::string(check);
+    if(!s.empty()) {
+        m_Error = true;
+        return false;
+    }
+
+    m_OperandB = std::strtod(input.substr(end + 1).c_str(), &check);
+    s = std::string(check);
+    if(!s.empty()) {
+        m_Error = true;
+        return false;
+    }
 
     return true;
 }
 
 std::string COperation::GetOutput() const {
+    if(m_Error)
+        return "Error";
     if(m_Cycle)
         return "Cycle";
 
@@ -125,7 +143,7 @@ std::set<std::string> COperation::GetParents() {
 }
 
 void COperation::CycleSwitch() {
-    m_Cycle = !m_Cycle;
+    m_Cycle = true;
 }
 
 std::string COperation::GetInput() const {
@@ -134,4 +152,29 @@ std::string COperation::GetInput() const {
 
 bool COperation::InCycle() {
     return m_Cycle;
+}
+
+void COperation::DeleteParent(std::string parent) {
+    for(const auto& i : m_Parents) {
+        if (i == parent)
+            m_Parents.erase(i);
+    }
+}
+
+void COperation::DeleteChild(const std::string &child) {
+    int j = 0;
+    for(const auto& i : m_Children) {
+        if (i == child)
+            m_Children.erase(m_Children.begin()+j);
+
+        j++;
+    }
+}
+
+void COperation::CycleFalse() {
+    m_Cycle = false;
+}
+
+void COperation::ErrorTrue() {
+    m_Error = true;
 }

@@ -13,11 +13,6 @@ CNumber::CNumber(std::string mInput) : m_Input(std::move(mInput)) {
     m_Cycle = false;
 }
 
-CNumber::CNumber(std::string mInput, int mXPos, int mYPos) : m_Input(std::move(mInput)), m_xPos(mXPos), m_yPos(mYPos) {
-    m_Result = std::stod(m_Input);
-    m_Cycle = false;
-}
-
 CNumber::~CNumber() = default;
 
 std::ostream &operator<<(std::ostream &os, const CNumber &number) {
@@ -34,6 +29,8 @@ CCell::CType CNumber::CellType() const {
 }
 
 std::string CNumber::GetOutput() const {
+    if(m_Error)
+        return "Error";
     if(m_Cycle)
         return "Cycle";
     return m_Input;
@@ -50,22 +47,6 @@ bool CNumber::HasChildren() {
 
 std::vector<std::string> CNumber::GetChildren() {
     return this->m_Children;
-}
-
-int CNumber::getMXPos() const {
-    return m_xPos;
-}
-
-void CNumber::setMXPos(int mXPos) {
-    m_xPos = mXPos;
-}
-
-int CNumber::getMYPos() const {
-    return m_yPos;
-}
-
-void CNumber::setMYPos(int mYPos) {
-    m_yPos = mYPos;
 }
 
 void CNumber::Update(const std::string &content) {
@@ -85,7 +66,7 @@ std::set<std::string> CNumber::GetParents() {
 }
 
 void CNumber::CycleSwitch() {
-    m_Cycle = !m_Cycle;
+    m_Cycle = true;
 }
 
 std::string CNumber::GetInput() const {
@@ -94,6 +75,31 @@ std::string CNumber::GetInput() const {
 
 bool CNumber::InCycle() {
     return m_Cycle;
+}
+
+void CNumber::DeleteParent(std::string parent) {
+    for(const auto& i : m_Parents) {
+        if (i == parent)
+            m_Parents.erase(i);
+    }
+}
+
+void CNumber::DeleteChild(const std::string &child) {
+    int j = 0;
+    for(const auto& i : m_Children) {
+        if (i == child)
+            m_Children.erase(m_Children.begin()+j);
+
+        j++;
+    }
+}
+
+void CNumber::CycleFalse() {
+    m_Cycle = false;
+}
+
+void CNumber::ErrorTrue() {
+    m_Error = true;
 }
 
 

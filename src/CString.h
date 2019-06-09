@@ -1,7 +1,6 @@
-//
-// Created by hung on 12.5.19.
-//
-
+/**
+ * Class for handling strings
+ */
 #ifndef SEMESTRAL_CSTRING_H
 #define SEMESTRAL_CSTRING_H
 
@@ -29,6 +28,8 @@ public:
 
     void AddChild(const std::string& child) override;
 
+    void DeleteChild(const std::string &child) override;
+
     bool HasChildren() override;
 
     std::vector<std::string> GetChildren() override;
@@ -43,13 +44,20 @@ public:
 
     void CycleSwitch() override;
 
+    void CycleFalse() override;
+
     bool InCycle() override;
+
+    void DeleteParent(std::string parent) override;
+
+    void ErrorTrue() override;
 
 private:
     std::string m_Input;
     std::vector<std::string> m_Children;
     std::set<std::string> m_Parents;
     bool m_Cycle;
+    bool m_Error;
 };
 
 

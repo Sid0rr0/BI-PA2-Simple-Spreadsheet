@@ -23,8 +23,6 @@ public:
      */
     explicit CFunction(std::string mInput);
 
-    CFunction(std::string mInput, const std::string& mValue);
-
     CFunction(std::string mInput, CCell* cell);
 
     CFunction(std::string mInput, std::vector<std::string>   cells);
@@ -69,7 +67,7 @@ public:
      * @param func
      * @return bool
      */
-    bool isSupportedFunction(const std::string &func) const;
+    bool isSupportedFunction(const std::string &func);
 
     /**
      * Overloaded output operator
@@ -85,6 +83,8 @@ public:
 
     void AddChild(const std::string& child) override;
 
+    void DeleteChild(const std::string &child) override;
+
     bool HasChildren() override;
 
     std::vector<std::string> GetChildren() override;
@@ -93,13 +93,20 @@ public:
 
     void AddParent(const std::string &parent) override;
 
+    void DeleteParent(std::string parent) override;
+
     bool HasParents() override;
 
     std::set<std::string> GetParents() override;
 
     void CycleSwitch() override;
 
+    void CycleFalse() override;
+
     bool InCycle() override;
+
+    void ErrorTrue() override;
+
 
 private:
     std::string m_Input;

@@ -105,8 +105,18 @@ public:
      */
     bool IsNumber(const std::string& s);
 
+    /**
+     *
+     * @param destFileName name of the destination file
+     * @return true if success
+     */
     bool SaveToFile(const std::string& destFileName);
 
+    /**
+     *
+     * @param srcFileName name of the source file
+     * @return true if success
+     */
     bool ReadFromFile(const std::string& srcFileName);
 
 private:
