@@ -17,7 +17,14 @@ int main() {
     CTable t1;
     auto * c = new CCursor(' ', stdscr);
     int key = 0, x = 0, y = 0;
+
+    getmaxyx(stdscr, y, x);
+    move(2, 0);
+    hline(' ', getmaxx(stdscr));
+    printw("X_Max: %d, Y_Max: %d", x, y);
+    move(6, 12);
     unsigned i;
+    bool file = false;
     char arr[MAX_LEN];
     while (key != 27) {
         key = c->Move();
@@ -51,6 +58,7 @@ int main() {
                 if(key == KEY_F(2)) {
                     arr[i] = '\0';
                     t1.ReadFromFile(arr);
+                    file = true;
                     break;
                 }
 
@@ -72,8 +80,9 @@ int main() {
                     mvprintw(y, x++, "%c", key);
                 }
             }
+            if(file)
+                break;
             arr[i] = '\0';
-            //todo pokud je kurzor na zacatku tak se ulozi ""
 
             move(0, 7);
             hline(' ', getmaxx(stdscr));
@@ -88,11 +97,6 @@ int main() {
         t1.DisplayContent();
         c->Display();
         refresh();
-
-        getyx(stdscr, y, x);
-        move(2, 0);
-        hline(' ', getmaxx(stdscr));
-        printw("X_Max: %d, Y_Max: %d", x, y);
 
         c->Display();
         std::pair<int, int> fakeCoo = t1.GetFakeCoordinates(stdscr);

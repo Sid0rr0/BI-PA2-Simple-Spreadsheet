@@ -26,8 +26,8 @@ CTable::CTable(){
 
     addstr("Input: ");
     mvaddstr(1, 0, "Output: ");
-    mvprintw(0, 50, "Max: %d %d", this->m_YMax, this->m_XMax);
-    mvprintw(0, 70, "Max Fake: %d %d", (m_YMax - 5) / 2, (m_XMax - 4) / 10);
+    /*mvprintw(2, 20, "Max: %d %d", this->m_YMax, this->m_XMax);
+    mvprintw(2, 30, "Max Fake: %d %d", (m_YMax - 5) / 2, (m_XMax - 4) / 10);*/
 
     DrawHorizontalLines(this->m_YMax, this->m_XMax);
     DrawCoordinates(this->m_YMax, this->m_XMax);
@@ -176,7 +176,7 @@ bool CTable::SaveCell(WINDOW * window, const std::string& content) {
         end = content.find(')');
         std::string endCoordS = content.substr(start, end - start);
 
-        mvprintw(1, 190, "%s %s", startCoordS.c_str(), endCoordS.c_str());
+        //mvprintw(1, 190, "%s %s", startCoordS.c_str(), endCoordS.c_str());
 
         auto startCoord = GetFakeCoordinates(startCoordS);
         auto endCoord = GetFakeCoordinates(endCoordS);
@@ -188,7 +188,7 @@ bool CTable::SaveCell(WINDOW * window, const std::string& content) {
             }
         }
 
-        mvprintw(0, 190, "cells: %d", cells.size());
+        //mvprintw(0, 190, "cells: %d", cells.size());
 
         delete(m_Array[coord.second][coord.first]);
         //m_Array[coord.second][coord.first] = new CString(content);
@@ -211,7 +211,7 @@ bool CTable::SaveCell(WINDOW * window, const std::string& content) {
             }
 
             std::string argument = content.substr(start, end - start);
-        mvprintw(0, 110, "value: %s", argument.c_str());
+        //mvprintw(0, 110, "value: %s", argument.c_str());
             if(IsNumber(argument)) {
                 delete(m_Array[coord.second][coord.first]);
                 m_Array[coord.second][coord.first] = new CFunction(content);
@@ -234,9 +234,9 @@ bool CTable::SaveCell(WINDOW * window, const std::string& content) {
                     return true;
                 }
 
-        mvprintw(0, 120, "ss: %d, %d", yParentCoord, xParentCoord);
+        /*mvprintw(0, 120, "ss: %d, %d", yParentCoord, xParentCoord);
         mvprintw(0, 130, "co input: %s", (m_Array[yParentCoord][xParentCoord]->GetOutput()).c_str());
-        mvprintw(0, 150, "GetReadCoord: %s", GetReadCoord(coord).c_str());
+        mvprintw(0, 150, "GetReadCoord: %s", GetReadCoord(coord).c_str());*/
 
                 m_Array[yParentCoord][xParentCoord]->AddChild(GetReadCoord(coord)); //add itself to his parent as child
                 auto currCellParents = m_Array[coord.second][coord.first]->GetParents(); //gets his parents
@@ -247,7 +247,7 @@ bool CTable::SaveCell(WINDOW * window, const std::string& content) {
                 //currCellParents.insert(GetReadCoord(coord));
                 if(currCellParents.find(GetReadCoord(parentCoord)) != currCellParents.end()) {
                     m_Array[coord.second][coord.first]->CycleSwitch();
-                    mvprintw(1, 130, "ERROR");
+                    //mvprintw(1, 130, "ERROR");
                 } else
                     m_Array[coord.second][coord.first]->AddParent(GetReadCoord(parentCoord));
 
@@ -256,14 +256,14 @@ bool CTable::SaveCell(WINDOW * window, const std::string& content) {
                 if(m_Array[yParentCoord][xParentCoord]->HasParents()) {
                     for(const auto& i: parentCellParents) {
                         if(currCellParents.find(i) != currCellParents.end() && !currCellParents.empty()) {
-                            mvprintw(1, 120, "ERROR0");
+                            //mvprintw(1, 120, "ERROR0");
                             m_Array[coord.second][coord.first]->CycleSwitch();
                             //return true;
                         }
                         if(i == GetReadCoord(coord))
                             m_Array[coord.second][coord.first]->CycleSwitch();
 
-                        mvprintw(1, 140, "f%s|%s", i.c_str(), GetReadCoord(coord).c_str());
+                        //mvprintw(1, 140, "f%s|%s", i.c_str(), GetReadCoord(coord).c_str());
 
                         m_Array[coord.second][coord.first]->AddParent(i);
                         //mvprintw(1, 180, "parent cp: %s", GetReadCoord(parentCoord).c_str());
@@ -285,22 +285,6 @@ bool CTable::SaveCell(WINDOW * window, const std::string& content) {
         std::string s = std::string(check);
         if(s.empty()) { //is number
 
-            /*if(m_Array[coord.second][coord.first]->HasChildren()) {
-                auto children = m_Array[coord.second][coord.first]->GetChildren();
-                delete(m_Array[coord.second][coord.first]);
-                //m_Array[coord.second][coord.first] = new CNumber(content, coord.first, coord.second);
-                m_Array[coord.second][coord.first] = new CNumber(content);
-
-                for(const auto &i: children) {
-                    m_Array[coord.second][coord.first]->AddChild(i);
-                }
-                UpdateCell(coord);
-            } else {
-                delete(m_Array[coord.second][coord.first]);
-                //m_Array[coord.second][coord.first] = new CNumber(content, coord.first, coord.second);
-                m_Array[coord.second][coord.first] = new CNumber(content);
-            }*/
-            //todo pokud mel parenty tak se od nich smazat jako child?
             if(m_Array[coord.second][coord.first]->HasParents()) {
                 auto parents = m_Array[coord.second][coord.first]->GetParents();
                 for(const auto& i: parents) {
@@ -314,18 +298,6 @@ bool CTable::SaveCell(WINDOW * window, const std::string& content) {
 
         } else {
             //is string
-            /*if(m_Array[coord.second][coord.first]->HasChildren()) {
-                auto children = m_Array[coord.second][coord.first]->GetChildren();
-                delete(m_Array[coord.second][coord.first]);
-                m_Array[coord.second][coord.first] = new CString(content);
-                for(const auto &i: children) {
-                    m_Array[coord.second][coord.first]->AddChild(i);
-                }
-                UpdateCell(coord);
-            } else {
-                delete(m_Array[coord.second][coord.first]);
-                m_Array[coord.second][coord.first] = new CString(content);
-            }*/
 
             delete(m_Array[coord.second][coord.first]);
             m_Array[coord.second][coord.first] = new CString(content);
@@ -347,9 +319,9 @@ void CTable::PrintArr() {
     for (int i = 0; i < (m_YMax - 5) / 2; ++i) {
         for (int j = 0; j < (m_XMax - 4) / 10; ++j) {
 
-            for (const auto& k : m_Array[i][j]->GetParents()) {
+            /*for (const auto& k : m_Array[i][j]->GetParents()) {
                 std::cout << k << "|" ;
-            }
+            }*/
 
             std::cout << (m_Array[i][j]->GetOutput()).c_str() << ", ";
         }
@@ -428,15 +400,20 @@ bool CTable::ReadFromFile(const std::string &srcFileName) {
 
     if(!fileIn.good()) {
         fileIn.close();
+        mvprintw(1, 180, "Cant open input file");
         return false;
     }
     int j = 0, i = 0;
 
     while ( getline (fileIn, line) ) {
+        if(i == 19)
+            break;
         auto start = 0U;
         auto end = line.find(delimiter);
 
         while (end != std::string::npos) {
+            if(j == 24)
+                break;
             delete(m_Array[i][j]);
             m_Array[i][j] = new CString(line.substr(start, end - start));
             start = end + delimiter.length();

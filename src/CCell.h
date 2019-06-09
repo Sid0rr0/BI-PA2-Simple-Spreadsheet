@@ -120,8 +120,14 @@ public:
      */
     virtual void CycleSwitch() = 0;
 
+    /**
+     * Switch cycle bool to false
+     */
     virtual void CycleFalse() = 0;
 
+    /**
+     * Switch error bool to false
+     */
     virtual void ErrorTrue() = 0;
 
     /**
