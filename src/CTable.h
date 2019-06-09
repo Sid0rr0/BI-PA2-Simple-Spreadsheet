@@ -1,6 +1,6 @@
-//
-// Created by hung on 2.6.19.
-//
+/**
+ * Class for rendering the table and the cell content
+ */
 
 #ifndef LETHANHH_CTABLE_H
 #define LETHANHH_CTABLE_H
@@ -36,10 +36,6 @@ public:
      * @param xMax number of maximum columns of terminal
      */
     void DrawVerticalLines(int yMax, int xMax);
-
-    /*void DrawCoordinates(std::pair<int, int> mMaxCoor);
-    void DrawHorizontalLines(std::pair<int, int> mMaxCoor);
-    void DrawVerticalLines(std::pair<int, int> mMaxCoor);*/
 
     /**
      * Returns pair of coordinates of current cell position
@@ -94,6 +90,12 @@ public:
      */
     std::string GetOutput(int y, int x) const;
 
+    /**
+     * Get cell input
+     * @param y coordinate
+     * @param x coordinate
+     * @return input string
+     */
     std::string GetInput(int y, int x) const;
 
     /**
@@ -102,12 +104,14 @@ public:
      * @return true if possible
      */
     bool IsNumber(const std::string& s);
+
+    bool SaveToFile(const std::string& destFileName);
+
+    bool ReadFromFile(const std::string& srcFileName);
+
 private:
     int m_YMax{}, m_XMax{};
     int m_Y{}, m_X{};
-    /*std::pair<int, int> m_CurrCoor;
-    std::pair<int, int> m_MaxCoor;*/
-    //std::vector<std::vector<CCell*>> m_Array;
     CCell*** m_Array;
 };
 

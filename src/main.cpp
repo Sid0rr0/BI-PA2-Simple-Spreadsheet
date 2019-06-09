@@ -54,6 +54,13 @@ int main() {
         }
         move(yOrig, xOrig);*/
 
+        /*if(key == KEY_F(1)) {
+            move(0, 7);
+            hline(' ', getmaxx(stdscr));
+            move(0, 7);
+            key = wgetch(stdscr);
+        }*/
+
         if(key == 10 || (32 <= key && key <= 126)) { //ENTER
 
             for (char & j : arr)
@@ -71,6 +78,21 @@ int main() {
 
             while(true) {
                 key = wgetch(stdscr);
+                if(key == KEY_F(1)) {
+                    arr[i] = '\0';
+                    t1.SaveToFile(arr);
+
+                    delete c;
+                    endwin();
+                    return 0;
+                }
+
+                if(key == KEY_F(2)) {
+                    arr[i] = '\0';
+                    t1.ReadFromFile(arr);
+                    break;
+                }
+
                 if(key == 10)
                     break;
                 else if (key == KEY_BACKSPACE) {
@@ -91,7 +113,6 @@ int main() {
             }
             arr[i] = '\0';
             //todo pokud je kurzor na zacatku tak se ulozi ""
-            //todo premazat bunky na zacatku - jinak se bude zobrazovat to stary
 
             move(0, 7);
             hline(' ', getmaxx(stdscr));
@@ -138,17 +159,9 @@ int main() {
         //todo dodelat pro ostatni
         //todo pridat linkovani pro jenom bunky
     //todo cykly
-    //todo agregacni fce
     //todo ukladani do souboru
     //todo osetrit vstupy
 
-    //todo kazda bunka teda set rodicu
-
-
-    //todo kdyz se zmackne enter tak do inputu se napise to co bylo uz v bunce
-    //todo v outputu se vzdycky bude zobrazovat co je raw v bunce?
-
-    //todo pouzivat pair?
     //todo rozdelit na vice oken?
 
     delete c;

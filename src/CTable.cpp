@@ -5,6 +5,7 @@
 #include <ncurses.h>
 #include <iostream>
 #include <cstdlib>
+#include <fstream>
 #include "CTable.h"
 #include "CCursor.h"
 #include "CCell.h"
@@ -16,17 +17,12 @@
 
 
 CTable::CTable(){
-    /*initscr();
-    cbreak();*/
-
     if(has_colors()) {
         start_color();
         init_pair(1, COLOR_CYAN, COLOR_WHITE);
     }
 
     getmaxyx(stdscr, this->m_YMax, this->m_XMax);
-    //getmaxyx(stdscr, m_MaxCoor.first, m_MaxCoor.second);
-    //printw("%d %d", this->m_YMax, this->m_XMax);
 
     addstr("Input: ");
     mvaddstr(1, 0, "Output: ");
@@ -61,8 +57,6 @@ CTable::CTable(){
         }
     }
 
-    //getch();
-    //endwin();
 }
 
 CTable::~CTable() {
@@ -78,11 +72,6 @@ CTable::~CTable() {
     delete[](m_Array);
 }
 
-/*void CTable::DrawCoordinates(std::pair<int, int> mMaxCoor) {
-    int c = 1;
-    m_CurrCoor.second = 1, m_CurrCoor.first = 6;
-    move(m_CurrCoor.first , m_CurrCoor.second);
-}*/
 
 void CTable::DrawCoordinates(int yMax, int xMax) {
     int c = 1;
@@ -186,9 +175,6 @@ void CTable::UpdateCell(std::pair<int, int> parentCoord) {
 
     if(parent->InCycle())
         return;
-
-
-    //if the cell that is updated has children update is aswell
 
     auto children = parent->GetChildren();
 
@@ -379,14 +365,6 @@ bool CTable::SaveCell(WINDOW * window, const std::string& content) {
 }
 
 void CTable::PrintArr() {
-    /*for (auto & i : m_Array) {
-        for (const auto & j : i) {
-            //std::cout << j << ", ";
-            (j->GetOutput()).c_str();
-        }
-        std::cout << std::endl;
-    }*/
-
     for (int i = 0; i < (m_YMax - 5) / 2; ++i) {
         for (int j = 0; j < (m_XMax - 4) / 10; ++j) {
 
@@ -435,6 +413,59 @@ std::pair<int, int> CTable::GetFakeCoordinates(std::string link) {
     link.erase(0, 1);
     int yCoord = std::strtol(link.c_str(), &check, 10) - 1;
     return std::pair<int, int>(xCoord, yCoord);
+}
+
+bool CTable::SaveToFile(const std::string& destFileName) {
+    std::fstream fileOut;
+    fileOut.open(destFileName, std::ios::out);
+
+    if(!fileOut.is_open() || fileOut.fail()) {
+        mvprintw(1, 180, "Cant open output file");
+        fileOut.close();
+        return false;
+    }
+
+    for (int i = 0; i < (m_YMax - 5) / 2; ++i) {
+        for (int j = 0; j < (m_XMax - 4) / 10; ++j) {
+            fileOut.write(m_Array[i][j]->GetOutput().c_str(), m_Array[i][j]->GetOutput().size());
+            fileOut << ",";
+
+        }
+        fileOut << std::endl;
+    }
+
+    fileOut.close();
+
+    return true;
+}
+
+bool CTable::ReadFromFile(const std::string &srcFileName) {
+    std::fstream fileIn;
+    std::string line, delimiter = ",";
+    fileIn.open(srcFileName, std::ios::in);
+
+    if(!fileIn.good()) {
+        fileIn.close();
+        return false;
+    }
+    int j = 0, i = 0;
+
+    while ( getline (fileIn, line) ) {
+        auto start = 0U;
+        auto end = line.find(delimiter);
+
+        while (end != std::string::npos) {
+            delete(m_Array[i][j]);
+            m_Array[i][j] = new CString(line.substr(start, end - start));
+            start = end + delimiter.length();
+            end = line.find(delimiter, start);
+            j++;
+        }
+        i++;
+    }
+
+    fileIn.close();
+    return true;
 }
 
 
