@@ -11,12 +11,17 @@ lethanhh: build/main.o build/CCell.o build/CFunction.o build/CNumber.o build/CSt
 		mkdir -p build
 		g++ build/main.o build/CCell.o build/CFunction.o build/CNumber.o build/CString.o build/COperation.o build/CTable.o build/CCursor.o -lncurses -o lethanhh
 
-run: clean compile
+run: compile
 		./lethanhh
+
+doc:
+		cd ./src; echo "I'm in src"; \
+		doxygen doxygen.conf
 
 clean:
 		rm -rf ./lethanhh
 		rm -r ./build
+		rm -r ./doc
 
 build/main.o: src/CCell.cpp src/CFunction.cpp src/CNumber.cpp src/CString.cpp src/COperation.cpp src/CTable.cpp src/CCursor.cpp
 		mkdir -p build

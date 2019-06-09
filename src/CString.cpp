@@ -22,6 +22,8 @@ CCell::CType CString::CellType() const {
 }
 
 std::string CString::GetOutput() const {
+    if(m_Error)
+        return "Error";
     if(m_Cycle)
         return "Cycle";
     return m_Input;
