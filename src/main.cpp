@@ -22,9 +22,9 @@ int main() {
     move(2, 0);
     hline(' ', getmaxx(stdscr));
     printw("X_Max: %d, Y_Max: %d", x, y);
+    mvprintw(2, 30, "ESC for exit, to save to file or read from file go to any cell and write the name of the file and press F1 or F2 respectively");
     move(6, 12);
     unsigned i;
-    bool file = false;
     char arr[MAX_LEN];
     while (key != 27) {
         key = c->Move();
@@ -58,7 +58,7 @@ int main() {
                 if(key == KEY_F(2)) {
                     arr[i] = '\0';
                     t1.ReadFromFile(arr);
-                    file = true;
+
                     break;
                 }
 
@@ -80,8 +80,7 @@ int main() {
                     mvprintw(y, x++, "%c", key);
                 }
             }
-            if(file)
-                break;
+
             arr[i] = '\0';
 
             move(0, 7);

@@ -15,13 +15,13 @@ run: compile
 		./lethanhh
 
 doc:
-		cd ./src; echo "I'm in src"; \
-		doxygen doxygen.conf
+		cd ./src && doxygen doxygen.conf
 
 clean:
 		rm -rf ./lethanhh
-		rm -r ./build
-		rm -r ./doc
+		rm -rf ./build
+		rm -rf ./doc
+		rm -ff ./src/latex
 
 build/main.o: src/CCell.cpp src/CFunction.cpp src/CNumber.cpp src/CString.cpp src/COperation.cpp src/CTable.cpp src/CCursor.cpp
 		mkdir -p build

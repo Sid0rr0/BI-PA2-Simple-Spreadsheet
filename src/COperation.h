@@ -68,7 +68,7 @@ public:
     std::vector<std::string> GetChildren() override;
 
     /**
-     *
+     * Updates both operands
      * @param content both operands separated by whitespace
      */
     void Update(const std::string &content) override;

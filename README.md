@@ -15,9 +15,16 @@ The spreadsheet will be able to be saved to a file in csv format (following basi
 
 Finally the spreadsheet will implement aggregation functions such as: =AVG(D3:G5), =MAX(A1:A15), =COUNT(C5:D6)
 
+###Requirements
 
+    g++
+    libncurses
 
-#####Polymorphism
+For documentation
 
-Parent class CCell and it's children CString, CNumber, CFunction.
+    doxygen
+    graphviz
+    
+    
+
 

@@ -23,8 +23,10 @@ CFunction::CFunction(std::string mInput): m_Input(std::move(mInput)){
 
     ParseInput(this->m_Input);
 
-    if(!isSupportedFunction(this->m_Name))
+    if(!isSupportedFunction(this->m_Name)) {
         this->m_Result = 0;
+        m_Error = true;
+    }
     else
         getResult();
 }

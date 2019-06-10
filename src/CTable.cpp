@@ -406,13 +406,13 @@ bool CTable::ReadFromFile(const std::string &srcFileName) {
     int j = 0, i = 0;
 
     while ( getline (fileIn, line) ) {
-        if(i == 19)
+        if(i == (m_YMax - 5) / 2)
             break;
         auto start = 0U;
         auto end = line.find(delimiter);
-
+        j = 0;
         while (end != std::string::npos) {
-            if(j == 24)
+            if(j == (m_XMax - 4) / 10)
                 break;
             delete(m_Array[i][j]);
             m_Array[i][j] = new CString(line.substr(start, end - start));
