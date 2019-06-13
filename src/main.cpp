@@ -22,7 +22,7 @@ int main() {
     move(2, 0);
     hline(' ', getmaxx(stdscr));
     printw("X_Max: %d, Y_Max: %d", x, y);
-    mvprintw(2, 30, "ESC for exit, to save to file or read from file go to any cell and write the name of the file and press F1 or F2 respectively");
+    mvprintw(2, 3 0, "ESC for exit, to save to file or read from file go to any cell and write the name of the file and press F1 or F2 respectively");
     move(6, 12);
     unsigned i;
     char arr[MAX_LEN];

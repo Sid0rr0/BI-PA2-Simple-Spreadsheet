@@ -11,6 +11,7 @@
 CNumber::CNumber(std::string mInput) : m_Input(std::move(mInput)) {
     m_Result = std::stod(m_Input);
     m_Cycle = false;
+    m_Error = false;
 }
 
 CNumber::~CNumber() = default;
