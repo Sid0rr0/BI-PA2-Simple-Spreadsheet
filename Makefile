@@ -21,7 +21,6 @@ clean:
 		rm -rf ./lethanhh
 		rm -rf ./build
 		rm -rf ./doc
-		rm -ff ./src/latex
 
 build/main.o: src/CCell.cpp src/CFunction.cpp src/CNumber.cpp src/CString.cpp src/COperation.cpp src/CTable.cpp src/CCursor.cpp
 		mkdir -p build
